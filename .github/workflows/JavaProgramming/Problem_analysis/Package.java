@@ -8,7 +8,7 @@ public class Package {
         Scanner t_s = new Scanner(System.in);
         double gross = 0.0;
         double net = 0.0;
-        int A = 500;
+        double A = 500.0;
 
         System.out.print("Weight in Kg: ");
         int w = inp.nextInt();
@@ -18,21 +18,25 @@ public class Package {
 
         System.out.print("Distance in Km: ");
         int d = inp.nextInt();
+        System.out.println();
 
-        if (d <= 500) {
-            if (t == 'A' || t == 'a') {
+        if (d <= 500) 
+        {
+            if (t == 'A' || t == 'a') 
+            {
                 if (w <= 5 && w > 0) {
                     gross = w * (10.50 * (1));
                     net = gross + (gross * 0.10);
                 }
-                if (w > 5 && w < 10) {
+                if (w > 5 && w <= 10) {
                     gross = w * (15.75 * (1));
                     net = gross + (gross * 0.10);
                 }
-                if (w > 10 && w < 20) {
+                if (w > 10 && w <= 20) {
                     gross = w * (20.65 * (1));
                     net = gross + (gross * 0.10);
                 }
+
             }
 
             if (t == 'B' || t == 'b') {
@@ -40,30 +44,37 @@ public class Package {
                     gross = w * (11.75 * (1));
                     net = gross + (gross * 0.10);
                 }
-                if (w > 5 && w < 10) {
+                if (w > 5 && w <= 10) {
                     gross = w * (18.50 * (1));
                     net = gross + (gross * 0.10);
                 }
-                if (w > 10 && w < 20) {
+                if (w > 10 && w <= 20) {
                     gross = w * (23.65 * (1));
                     net = gross + (gross * 0.10);
                 }
+
             }
+            else
+                {
+                    System.out.println("Invalid Type");
+                    System.out.println();
+                }
         }
         if (d > 500) {
             if (t == 'A' || t == 'a') {
                 if (w <= 5 && w > 0) {
-                    gross = w + (10.50 * (d / A));
+                    gross = w * (10.50 * (d / A));
                     net = gross + (gross * 0.10);
                 }
-                if (w > 5 && w < 10) {
-                    gross = w + (15.75 * (d / A));
+                if (w > 5 && w <= 10) {
+                    gross = w * (15.75 * (d / A));
                     net = gross + (gross * 0.10);
                 }
-                if (w > 10 && w < 20) {
-                    gross = w + (20.65 * (d / A));
+                if (w > 10 && w <= 20) {
+                    gross = w * (20.65 * (d / A));
                     net = gross + (gross * 0.10);
                 }
+
             }
 
             if (t == 'B' || t == 'b') {
@@ -80,8 +91,25 @@ public class Package {
                     net = gross + (gross * 0.10);
                 }
             }
+            else
+                {
+                    System.out.println("Invalid Type");
+                    System.out.println();
+                }
+        }
+        else
+        {
+            System.out.println("Invalid Distance");
+            System.out.println();
+        }
+        if(!(w > 0 && w <= 20))
+        {
+            System.out.print("Invalid Weight");
+            System.out.println();
         }
 
+
+        System.out.println();
         System.out.println("Charge: " + gross);
         System.out.println("Total Charge: " + net);
 
