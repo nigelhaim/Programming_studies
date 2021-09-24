@@ -16,14 +16,15 @@ public class Telephone {
         double cost = (minu * 4);
         double price = cost;
         double final_net = 0.00;
-
+        double ded = 0.00;
         if (time == 'B' || time == 'b') {
             price = cost * 0.50;
         }
 
         if (minu > 60) {
             while (minu > 60) {
-                price = price * 0.15;
+                ded = price * 0.15;
+                price = price - ded;
                 minu -= 60;
             }
 
@@ -31,7 +32,7 @@ public class Telephone {
 
         final_net = price + (price * 0.12);
 
-        System.out.println("Gross: P" + price);
+        System.out.println("Gross: P" + cost);
         System.out.println("Net cost: P" + final_net);
         System.out.println();
 
