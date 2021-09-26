@@ -2,8 +2,10 @@ package Problem_analysis;
 
 import java.util.*;
 
-public class Telephone {
-    public static void main(String[] args) {
+public class Telephone 
+{
+    public static void main(String[] args) 
+    {
         Scanner sc = new Scanner(System.in);
 
         // Gets the Time of the day
@@ -23,7 +25,8 @@ public class Telephone {
             double final_net = 0.00;
             double ded = 0.00;
             //If night include discount 
-            if (time == 'B' || time == 'b') {
+            if (time == 'B' || time == 'b') 
+            {
                 price = cost * 0.50;
             }
 
