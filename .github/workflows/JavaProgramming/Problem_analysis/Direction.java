@@ -2,8 +2,10 @@ package Problem_analysis;
 
 import java.util.*;
 
-public class Direction {
-    public static void main(String[] args) {
+public class Direction 
+{
+    public static void main(String[] args) 
+    {
         Scanner di = new Scanner(System.in);
 
         System.out.print("True bearing: ");
