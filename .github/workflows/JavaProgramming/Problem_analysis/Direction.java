@@ -26,6 +26,21 @@ public class Direction {
             if (brng > 270 && brng < 360) {
                 System.out.print("N" + (360 - brng) + "E");
             }
+            
+            if (brng == 0 || brng== 360)
+            {
+                System.out.print("N");
+             }
+            
+            if (brng == 90)
+            {
+                System.out.print("E");
+             }
+            
+            if (brng == 180)
+            {
+                System.out.print("S");
+             }
         }
         di.close();
         System.out.println();
