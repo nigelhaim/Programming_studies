@@ -58,6 +58,7 @@ public class Telephone
             System.out.println();
             System.out.println("Invalid time!");
         }
+        
         System.out.println();
         sc.close();
     }

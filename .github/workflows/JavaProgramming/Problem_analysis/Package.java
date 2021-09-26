@@ -3,7 +3,8 @@ package Problem_analysis;
 import java.util.*;
 
 public class Package {
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         Scanner inp = new Scanner(System.in);
         Scanner t_s = new Scanner(System.in);
         double gross = 0.0;
