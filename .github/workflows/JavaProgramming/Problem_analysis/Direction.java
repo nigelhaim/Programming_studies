@@ -10,7 +10,7 @@ public class Direction
 
         System.out.print("True bearing: ");
         int t_t = di.nextInt();
-        int brng = 0;
+        int brng = t_t;
 
         if (brng > 0 && brng < 360) 
         {
