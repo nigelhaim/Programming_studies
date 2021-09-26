@@ -22,16 +22,33 @@ public class Direction
 
             if (brng > 90 && brng < 180) 
             {
-                System.out.print("S " + brng + " E");
+                System.out.print("S " + (180 - brng) + " E");
             }
 
             if (brng > 180 && brng < 270) 
             {
-                System.out.print("S" + brng + "W");
+                System.out.print("S" + (brng - 180) + "W");
             }
             if (brng > 270 && brng < 360) 
             {
-                System.out.print("N" + brng + "E");
+                System.out.print("N" + (360 - brng) + "E");
+            }
+
+            if(brng == 0 || brng == 360)
+            {
+                System.out.println("N");
+            }
+            if(brng == 90)
+            {
+                System.out.println("E");
+            }
+            if(brng == 180)
+            {
+                System.out.println("S");
+            }
+            if(brng == 270)
+            {
+                System.out.println("W");
             }
             System.out.println();
         }
