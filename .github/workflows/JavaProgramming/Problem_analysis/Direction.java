@@ -59,7 +59,7 @@ public class Direction {
             if (brng == 0 || brng== 360)
             {
                 System.out.print("N");
-             }
+            }
             
             if (brng == 90)
             {
