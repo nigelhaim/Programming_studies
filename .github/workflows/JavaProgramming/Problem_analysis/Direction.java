@@ -8,8 +8,9 @@ public class Direction {
 
         System.out.print("True bearing: ");
         int t_t = di.nextInt();
-        int brng = 180 - t_t;
+        int brng = 0;
 
+<<<<<<< HEAD
         if (brng > 0 && brng < 360) 
         {
             System.out.println();
@@ -37,6 +38,39 @@ public class Direction {
         {
             System.out.println();
             System.out.println("Invalid True Bearing!");
+=======
+        if (brng > 0 && brng < 360) {
+            if (brng > 0 && brng < 90) {
+      
+                System.out.print("N " + brng + " E");
+            }
+
+            if (brng > 90 && brng < 180) {
+                System.out.print("S " + (180 - brng) + " E");
+            }
+
+            if (brng > 180 && brng < 270) {
+                System.out.print("S" + (brng - 180)+ "W");
+            }
+            if (brng > 270 && brng < 360) {
+                System.out.print("N" + (360 - brng) + "E");
+            }
+            
+            if (brng == 0 || brng== 360)
+            {
+                System.out.print("N");
+             }
+            
+            if (brng == 90)
+            {
+                System.out.print("E");
+             }
+            
+            if (brng == 180)
+            {
+                System.out.print("S");
+             }
+>>>>>>> 2f3d88dc58e46782a653c1ca080a189311757732
         }
         di.close();
         System.out.println();
