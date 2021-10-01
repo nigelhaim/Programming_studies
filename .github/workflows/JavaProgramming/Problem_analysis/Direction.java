@@ -12,6 +12,7 @@ public class Direction
         int t_t = di.nextInt();
         int brng = t_t;
 
+        System.out.print("The Bearing is: ");
         if (brng > 0 && brng < 360) 
         {
             System.out.println();
@@ -36,19 +37,19 @@ public class Direction
 
             if(brng == 0 || brng == 360)
             {
-                System.out.println("N");
+                System.out.println("DUE N");
             }
             if(brng == 90)
             {
-                System.out.println("E");
+                System.out.println("DUE E");
             }
             if(brng == 180)
             {
-                System.out.println("S");
+                System.out.println("DUE S");
             }
             if(brng == 270)
             {
-                System.out.println("W");
+                System.out.println("DUE W");
             }
             System.out.println();
         }

@@ -46,6 +46,10 @@ public class Telephone
                 System.out.println("Net cost: P" + final_net);
 
             }
+            if (minu < 60)
+            {
+                
+            }
             if (minu < 0)
             {
                 System.out.println();
