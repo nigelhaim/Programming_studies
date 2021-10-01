@@ -77,6 +77,6 @@ public class Hotel
         System.out.print("Net Charge = " + net);
         System.out.println();
 
-
+        x.close();
     }    
 }
