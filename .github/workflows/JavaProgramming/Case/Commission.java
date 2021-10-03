@@ -1,6 +1,5 @@
 package Case;
 
-import java.security.Principal;
 import java.util.Scanner;
 
 public class Commission 
@@ -65,7 +64,7 @@ public class Commission
 
         else 
         {
-            nc = (sc * 1.12) - ca;
+            nc = (sc * 0.12) - ca;
         }
         System.out.println();
         System.out.println("Gross Commission: P " + sc);
