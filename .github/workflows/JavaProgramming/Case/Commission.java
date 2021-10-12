@@ -64,7 +64,7 @@ public class Commission
 
         else 
         {
-            nc = (sc * 0.12) - ca;
+            nc = sc - (sc * 0.12) - ca;
         }
         System.out.println();
         System.out.println("Gross Commission: P " + sc);

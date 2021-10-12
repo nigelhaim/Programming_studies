@@ -18,6 +18,7 @@ public class Hashmaker
                 char final_hash = (char) (ch + 5);
                 System.out.print(final_hash);
             }
+            mike.close();
             
     }    
 }
