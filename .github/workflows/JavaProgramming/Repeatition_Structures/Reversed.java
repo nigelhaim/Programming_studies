@@ -17,7 +17,7 @@ public class Reversed
             int reversed = num % 10;
             d = d * 10 + reversed;
 
-            num /= 10;
+            num /= 10 + (x - x);
 
            
         }
