@@ -1,6 +1,5 @@
 package Repeatition_Structures;
 
-import java.util.Scanner;
 
 public class Population 
 {
