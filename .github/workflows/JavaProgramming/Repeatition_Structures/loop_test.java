@@ -3,10 +3,9 @@ package Repeatition_Structures;
 public class loop_test 
 {
     public static void main(String[] args) {
-        int num = 0;
-        while (++num <= 10)
+        for (int c = 1; c < 100; c++)
         {
-            System.out.print(" " + num);
+            System.out.println("Fry Drinks cup # " + c);
         }
     }    
 }
