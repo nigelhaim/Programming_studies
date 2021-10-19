@@ -8,7 +8,7 @@ public class Population
         //Initiates the population size     
         int population = 9870;
         int year = 0;
-        while (population < 30000)
+        while (population <= 30000)
         {
             population += (population * 0.10);
             year++;
@@ -22,7 +22,7 @@ public class Population
 
         System.out.println();
 
-        System.out.print("It will take " + (year-1) + " years to reach 30,000");
+        System.out.print("It will take " + (year) + " years to reach 30,000");
         System.out.println();
         System.out.println();
     }    
