@@ -8,11 +8,11 @@ public class Firstnum_secondnum_page291_9_for
     {
         Scanner num = new Scanner(System.in);
 
-        System.out.println("Input the first Integer: ");
+        System.out.print("Input the first Integer: ");
         int f_num = num.nextInt();
 
         System.out.println("Please input an integer greater than the first integer.");
-        System.out.print("INput the second Integer: ");
+        System.out.print("Input the second Integer: ");
         int s_num = num.nextInt();
 
         System.out.println();
