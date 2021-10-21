@@ -11,7 +11,7 @@ public class Firstnum_secondnum_page291_9
         System.out.print("Input the first Integer: ");
         int f_num = num.nextInt();
 
-        System.out.println("Please the input an integer greater than the first integer");
+        System.out.println("Please input an integer greater than the first integer");
         System.out.print("Input the second Integer : ");
         int s_num = num.nextInt();
         System.out.println();
@@ -51,15 +51,17 @@ public class Firstnum_secondnum_page291_9
             System.out.println();
 
             //Output all squared versions of odd numbers   
-            System.out.print("Odd integers in their squared form: ");
+            System.out.print("The sum of the squares of all the odd numbers : ");
+            int total = 0;
             while (sqr < s_num)
             {
                 if (sqr % 2 == 1)
                 {
-                    System.out.print((sqr * sqr) + " ");
+                    total += sqr;
                 }
                 sqr++;
             }
+            System.out.print(total);
             System.out.println();
             System.out.println();
         }
