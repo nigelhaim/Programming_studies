@@ -20,7 +20,7 @@ public class Firstnum_secondnum_page291_9_for
         if (f_num < s_num)
         {
             //Prints odd integers 
-            System.out.print("Odd Integers are: ")
+            System.out.print("Odd Integers are: ");
             for (int odd = f_num; odd < s_num; odd++)
             {
                 if (odd % 2 == 1)
@@ -44,8 +44,21 @@ public class Firstnum_secondnum_page291_9_for
 
             System.out.println();
             System.out.println();
+             //Output all squared version of odd numbers
+            System.out.print("The sum of the squared odd integers: ");
+            int total = 0; 
+            for (int sqr = f_num; sqr < s_num; sqr++)
+            {
+                if(sqr % 2 == 1)
+                {
+                    total += sqr;
+                }
+            }
+            System.out.print(total);
+            System.out.println();
+            System.out.println();
 
-            //Output all squared version of odd numbers
+           
         }
         num.close();
     }
