@@ -1,89 +1,91 @@
 package Repeatition_Structures;
-
-import java.util.Scanner;
-
-public class Firstnum_secondnum_page291_9 
+import java.util.*;
+public class Firstnum_secondnum_page291_9_Do_while 
 {
     public static void main(String[] args) 
     {
         Scanner num = new Scanner(System.in);
-        
+
         System.out.print("Input the first Integer: ");
         int f_num = num.nextInt();
 
         System.out.println("Please input an integer greater than the first integer");
-        System.out.print("Input the second Integer: ");
+        System.out.print("Input the second integer: ");
         int s_num = num.nextInt();
+
         System.out.println();
-        //Initialize variables
-        int ev_lp = f_num;
-        int sqr = f_num;
+
+        //Initialize variables 
+        int ev_lp = f_num; 
+        int sqr = f_num; 
         if (f_num < s_num)
         {
-            //Prints odd integers
             System.out.print("Odd Integers are: ");
-            while (f_num < s_num)
+            do
             {
                 if (f_num % 2 == 1)
                 {
                     System.out.print(f_num + " ");
                 }
-
                 f_num++;
             }
-            
+            while (f_num < s_num);
+
             System.out.println();
             System.out.println();
-           
-            // Prints even Integers 
+
             System.out.print("Even Integers are: ");
-            while (ev_lp < s_num)
+            do
             {
-               
                 if (ev_lp % 2 == 0)
                 {
                     System.out.print(ev_lp + " ");
                 }
                 ev_lp++;
             }
+            while(ev_lp < s_num);
 
             System.out.println();
             System.out.println();
 
-            //Output all squared versions of odd numbers   
+            //Output all squared versions of odd numbers 
             System.out.print("The sum of the squares of all the odd numbers: ");
             int total = 0;
-            while (sqr < s_num)
+            do
             {
-                if (sqr % 2 == 1)
+                if (sqr < s_num)
                 {
                     total += sqr;
                 }
                 sqr++;
             }
+            while(sqr < s_num);
+
             System.out.print(total);
+
             System.out.println();
             System.out.println();
+
         }
-
-
-        else
+        
+        else 
         {
             System.out.println();
-            System.out.print("Pleae input the second integer greater than the first integer!");
+            System.out.print("Please input the second integer greater thatn the first integer!");
         }
-         //Output the squares between 1 and 10 
-        System.out.print("Number"); 
+
+        //Output the squares between 1 and 10
+        System.out.print("Number");
         System.out.println("\t Squared");
         int a = 1;
-        while (a <= 10)
+        do 
         {
             System.out.print(a);
-            System.out.println("\t    " + a * a);
-            a++; 
+            System.out.println("\t    "+ a * a);
+            a++;
         }
+        while (a <=10);
         System.out.println();
         num.close();
-
     }    
 }
