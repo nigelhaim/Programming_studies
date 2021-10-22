@@ -53,7 +53,7 @@ public class Firstnum_secondnum_page291_9_Do_while
             int total = 0;
             do
             {
-                if (sqr < s_num)
+                if (sqr % 2 == 1)
                 {
                     total += sqr;
                 }
