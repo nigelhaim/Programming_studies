@@ -70,7 +70,7 @@ public class Firstnum_secondnum_page291_9
         else
         {
             System.out.println();
-            System.out.print("Pleae input the second integer greater than the first integer!");
+            System.out.print("Please input the second integer greater than the first integer!");
         }
          //Output the squares between 1 and 10 
         System.out.print("Number"); 

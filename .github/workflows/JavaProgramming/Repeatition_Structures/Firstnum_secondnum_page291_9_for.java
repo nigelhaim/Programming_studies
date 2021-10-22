@@ -60,6 +60,22 @@ public class Firstnum_secondnum_page291_9_for
 
            
         }
+        else 
+        {
+            System.out.println();
+            System.out.print("Please input the second integer greater than the first integer!");
+        }
+
+        //Output the squres between 1 and 10
+        System.out.print("Number"); 
+        System.out.println("\t Squared");
+        for (int a = 0; a <= 10; a++ )
+        {
+            System.out.print(a);
+            System.out.println("\t    " + a * a);
+            a++;
+        }
+        System.out.println();
         num.close();
     }
 }
