@@ -1,5 +1,4 @@
 import java.util.*;
-
 public class Java_notes 
 {
     public static void main(String[] args) 
