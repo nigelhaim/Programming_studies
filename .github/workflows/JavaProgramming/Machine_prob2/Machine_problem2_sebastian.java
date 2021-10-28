@@ -39,7 +39,9 @@ public class Machine_problem2_sebastian
         int d = 0 ;
         int r = 0;
         //Prompts for 2nd value
-        switch (i)
+        if (i == 'A' || i == 'B')
+        {
+            switch (i)
         {
             //For arithmetic series
             case 'A':
@@ -64,6 +66,8 @@ public class Machine_problem2_sebastian
             n = nhs.nextInt();
             System.out.println();
         }      
+        }
+        
         //N must be greater than 0
         if (n > 0)
         {
