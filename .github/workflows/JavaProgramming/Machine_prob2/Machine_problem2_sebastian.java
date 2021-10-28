@@ -1,6 +1,6 @@
 package Machine_prob2;
 //Import
-import java.util.Scanner;
+import java.util.*;
 import java.lang.Math;
 
 public class Machine_problem2_sebastian 
@@ -42,17 +42,18 @@ public class Machine_problem2_sebastian
         if (i == 'A' || i == 'B')
         {
             switch (i)
-        {
-            //For arithmetic series
-            case 'A':
-                System.out.print("Input the common difference: ");
-                d = nhs.nextInt();
-                break;
-            //For geometric series
-            case 'B':
-                System.out.print("Input the common ratio: ");
-                r = nhs.nextInt();
-                break;
+            {
+                //For arithmetic series
+                case 'A':
+                    System.out.print("Input the common difference: ");
+                    d = nhs.nextInt();
+                    break;
+                //For geometric series
+                case 'B':
+                    System.out.print("Input the common ratio: ");
+                    r = nhs.nextInt();
+                    break;
+            }
         }
         
 
@@ -66,7 +67,6 @@ public class Machine_problem2_sebastian
             n = nhs.nextInt();
             System.out.println();
         }      
-        }
         
         //N must be greater than 0
         if (n > 0)
