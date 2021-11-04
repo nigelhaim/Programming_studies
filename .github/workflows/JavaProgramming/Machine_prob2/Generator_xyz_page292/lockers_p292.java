@@ -13,9 +13,8 @@ public class lockers_p292
 
         System.out.print("Input the number of lockers: ");
         int lock = prin.nextInt();
-
+        System.out.println("The open lockers are: ");
         int open_lock = 0;
-        String status = "Open";
         int x = 1;
         while (x <= 1)
         {
@@ -23,11 +22,16 @@ public class lockers_p292
             {
                 if (y <= Math.floor(Math.sqrt(lock)))//ctr <= number of open lockers
                 {
+                    System.out.print("| " + (y * y) + " |");
                     open_lock++;
                 }
             }
             x++;
         }
+        System.out.println();
+        System.out.println();
+        System.out.print("Here is the Full Data");
+        System.out.println();
         int nn = open_lock - (open_lock - 1);
         for (int stat = 1; stat <= lock; stat++)
         {
