@@ -26,10 +26,12 @@ public class Stephen
             total_coins -= 1;
             one_p++;
         }
-
+        
         System.out.println();
         System.out.println("The total amount of 5 pesos is: " + five_p);
         System.out.println("The total amount of 1 pesos is: " + one_p);
+
+        steph.close();
 
     }    
 }
