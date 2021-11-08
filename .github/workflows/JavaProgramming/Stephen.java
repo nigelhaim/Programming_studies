@@ -11,7 +11,7 @@ public class Stephen
 
         System.out.print("Please input the total amount: ");
         total_coins = steph.nextInt();
-
+        steph.close();
         
         for (five_pesos = 5; five_pesos < total_coins; five_pesos += 5)
         {
@@ -31,7 +31,7 @@ public class Stephen
         System.out.println("The total amount of 5 pesos is: " + five_p);
         System.out.println("The total amount of 1 pesos is: " + one_p);
 
-        steph.close();
+        
 
     }    
 }
