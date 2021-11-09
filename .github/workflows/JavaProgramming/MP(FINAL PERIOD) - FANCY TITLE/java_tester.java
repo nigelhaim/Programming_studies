@@ -1,4 +1,5 @@
-import java.util.Scanner;
+//Made by Nigel Haim N. Sebastian
+import java.util.*;
 
 public class java_tester 
 {
