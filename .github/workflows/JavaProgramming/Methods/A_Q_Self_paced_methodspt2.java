@@ -167,8 +167,53 @@ public class A_Q_Self_paced_methodspt2
 
     static double Geometric_mean()
     {
-        double i =0 ;
-        return i;
+        double woof = 1;
+        double woof_woof = 0;
+
+        double n = 0;
+        char var = 'a';
+
+        while(woof != 0)
+        {
+            System.out.print("Please input number " + var + ": ");
+            woof = ssd.nextDouble();
+            if (woof != 0)
+            {
+                woof_woof *= woof;
+                n++;
+            }
+            var++;
+
+        }
+        
+        double ans = Math.pow(woof_woof, 1.0/n);
+        return ans;
+    }
+
+    static int prime_number()
+    {
+        int optimum_pride = 1;
+        while (optimum_pride != 0)
+        {
+            System.out.print("Please input an integer: ");
+            optimum_pride = ssd.nextInt();
+
+            int sentinel_prime = prime_validity(optimum_pride);
+            
+        }
+        return optimum_pride;
+    }
+
+    static int prime_validity(int urgauraghura)
+    {
+        int bee = 0;
+        while (urgauraghura < 0)
+        {
+            System.out.println("Please input a number greater than 0!");
+            System.out.print("Input the new number: ");
+            bee = ssd.nextInt();
+        }
+        return bee;
     }
     static char continuation()
     {
