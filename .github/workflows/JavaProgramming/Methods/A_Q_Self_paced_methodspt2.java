@@ -19,7 +19,7 @@ public class A_Q_Self_paced_methodspt2
             switch (cc_f)
             {
                 case 'A':
-                    System.out.println("Welcome to the Arithmetic program!");
+                    System.out.println("Welcome to the Arithmetic Sequence!");
                     System.out.println("This program will return an arithmetic series and display the sum of every number");
                     System.out.println();
                     System.out.print("Please input the first integer: ");
@@ -41,7 +41,7 @@ public class A_Q_Self_paced_methodspt2
                     break;
                 
                 case 'B':
-                    System.out.println("Welcome to the Geometric program!");
+                    System.out.println("Welcome to the Geometric Sequence!");
                     System.out.println("This program will return a geometric series and display the sum of every number");
                     
                     System.out.println();
@@ -56,6 +56,7 @@ public class A_Q_Self_paced_methodspt2
                     System.out.println();
                     
                     System.out.print(Geometic_n(a_g, r, n_g));
+                    break;
 
                 case 'C':
                     System.out.println("Welcome to the harmonic mean!");
@@ -64,16 +65,37 @@ public class A_Q_Self_paced_methodspt2
                     System.out.println();
 
                     System.out.printf("The harmonic mean is: %.5f", Harmonic_mean());
+                    break;
                 
                 case 'D':
-                System.out.println("Welcome to the harmonic mean!");
-                System.out.println("This will show the Geometric mean of the given integers");
+                    System.out.println("Welcome to the Geometric mean!");
+                    System.out.println("This will show the Geometric mean of the given integers please input 0 to show the Geometric mean");
 
-                System.out.println();
+                    System.out.println();
 
-                System.out.printf("The Geometric mean is: %.5f", Geometric_mean());
+                    System.out.printf("The Geometric mean is: %.5f", Geometric_mean());
+                    break;
 
+                case 'E':
+                    System.out.println("Welcome to the prime number program!");
+                    System.out.println("This will display the largest prime number in a sequence of integers please input 0 to show the largerst prime number");
 
+                    System.out.println();
+                    int final_prime = prime_number();
+                    System.out.print("The largest prime number is: " + final_prime);
+                    break;
+
+                case 'F':
+                    System.out.println("Welcome to the Taylor Polynomial Degree n!");
+                    System.out.println("This will print the terms and the sum of the terms in a Taylor Polynomial sequence");
+
+                    System.out.println();
+
+                    System.out.printf("The Sum off all integers is: %.2f%n", Taylor_Polynomial());
+                
+                case 'Q':
+                    Quit();
+                    break;
             }
             System.out.println();
             cont = continuation();
@@ -96,6 +118,7 @@ public class A_Q_Self_paced_methodspt2
         System.out.println("C – Harmonic Series");
         System.out.println("D – Geometric mean");
         System.out.println("E – Largest Prime number");
+        System.out.println("F – Taylor Polynomial of Degree n");
         System.out.println("Q – Quit the program");
         System.out.print("Please input what to display: ");
         char i = ssd.next().toUpperCase().charAt(0); 
@@ -104,16 +127,19 @@ public class A_Q_Self_paced_methodspt2
 
     static char validation(char cc)
     {
-        while (cc < 'A' || cc > 'E') //Discrete Math 'or'
+
+        while (cc < 'A' || cc > 'F' && cc != 'Q') //Discrete Math 'or'
         {
-            System.out.println();
-            System.out.println("Invalid letter!");
-            System.out.print("Please input a letter on the Main Menu: ");
-            cc = ssd.nextLine().toUpperCase().charAt(0);
-            System.out.println();
+
+                System.out.println();
+                System.out.println("Invalid letter!");
+                System.out.print("Please input a letter on the Main Menu: ");
+                cc = ssd.nextLine().toUpperCase().charAt(0);
+                System.out.println();
         }
         char cc_f = cc;
         return cc_f;
+        
     }
     
     static int Arithmetic_n(int a, int d, int n)
@@ -192,21 +218,38 @@ public class A_Q_Self_paced_methodspt2
 
     static int prime_number()
     {
+        int sentinel_prime = 0;
+        
         int optimum_pride = 1;
-        while (optimum_pride != 0)
+        int current = 0;
+        do
         {
             System.out.print("Please input an integer: ");
             optimum_pride = ssd.nextInt();
-
-            int sentinel_prime = prime_validity(optimum_pride);
-            
+            sentinel_prime = prime_validity(optimum_pride);
+            for (int cnn = 2; cnn <= sentinel_prime / 2; ++cnn )
+            {
+                if (sentinel_prime % cnn == 0)
+                {
+                    break;
+                }  
+                else
+                {
+                    if (sentinel_prime > current)
+                    {
+                        current = sentinel_prime;
+                    }
+                }
+            }
         }
-        return optimum_pride;
+        while (optimum_pride != 0);
+        return current;
     }
+
 
     static int prime_validity(int urgauraghura)
     {
-        int bee = 0;
+        int bee = urgauraghura;
         while (urgauraghura < 0)
         {
             System.out.println("Please input a number greater than 0!");
@@ -215,6 +258,31 @@ public class A_Q_Self_paced_methodspt2
         }
         return bee;
     }
+
+    static double Taylor_Polynomial()
+    {
+        System.out.print("Please input the degreee of the polynomial: ");
+        int n = ssd.nextInt();
+
+        int i, fact =1;
+        double ans = 1;
+        for (int x = 1; x <= n; x++)
+        {
+            System.out.print("Please input the value of x_" + x + ": ");
+            int in = ssd.nextInt();
+
+            for(i = 1; i <= x; i++)
+            {    
+                fact = fact * i;    
+            }    
+            
+            double current = (Math.pow(in, x) / fact);
+            System.out.printf("The current degree is: %.2f%n", current);
+            ans += current;
+        }
+
+        return ans;
+    }
     static char continuation()
     {
         System.out.println("Do you want to continue? (Y or N)");
@@ -222,4 +290,11 @@ public class A_Q_Self_paced_methodspt2
         char cont = ssd.next().toUpperCase().charAt(0);
         return cont;
     }
+    
+    static void Quit()
+    {
+        System.out.println("Thank you for using the program, hope to see you soon!\n");
+        System.exit(0);
+    }
+
 }
