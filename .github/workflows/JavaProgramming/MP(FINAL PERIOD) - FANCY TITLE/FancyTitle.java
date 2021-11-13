@@ -65,12 +65,23 @@ public class FancyTitle
 
     public static String[] makeFooter(char c, int desiredLen) 
     {
-      
+
+      int fib_str = countFibSteps(desiredLen / 2);
+      String arr_footer[] = new String[fib_str]; 
+      String fib_array[] = makeFibStringList(c, fib_str);
+
+      for (int lvl = 0; lvl < fib_str; lvl++)
+      {
+          String border = fib_array[lvl];
+          String line = makeFilledCenterString(border, desiredLen); 
+          arr_footer[lvl] = line;
+      }
+      return arr_footer;
     }
 
     public static String createFancyTitle(String message, char c) 
     {
-      //insert code here
+      
     } 
         
     public static void main(String args[]) 

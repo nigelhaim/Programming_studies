@@ -1,22 +1,11 @@
+import javax.swing.border.Border;
+
 public class Java_tester_fancytitle 
 {
     public static void main(String[] args) 
     {
-        char cc = '*';
 
-        int desiredLenn = 20;
 
-        int fib_str = countFibSteps(desiredLenn / 2);
-
-        String fib_array[] = makeFibStringList(cc, fib_str);
-
-        for (int lvl = 0; lvl <= fib_str; lvl++)
-        {
-            int des_len = fib_array[lvl].length();
-            String border = fib_array[lvl];
-            String line = makeFilledCenterString(border, des_len); 
-            System.out.println(line);
-        }
     }
 
     public static int countFibSteps(int maxVal) 
