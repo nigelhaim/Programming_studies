@@ -1,7 +1,24 @@
-// SEBASTIAN, NIGEL HAIM   1CSA 
-// note: change the name of the class to FancyTitle
-public class FancyTitle
- {
+public class Java_tester_fancytitle 
+{
+    public static void main(String[] args) 
+    {
+        char cc = '*';
+
+        int desiredLenn = 20;
+
+        int fib_str = countFibSteps(desiredLenn / 2);
+
+        String fib_array[] = makeFibStringList(cc, fib_str);
+
+        for (int lvl = 0; lvl <= fib_str; lvl++)
+        {
+            int des_len = fib_array[lvl].length();
+            String border = fib_array[lvl];
+            String line = makeFilledCenterString(border, des_len); 
+            System.out.println(line);
+        }
+    }
+
     public static int countFibSteps(int maxVal) 
     {
         int current = 1;
@@ -18,8 +35,6 @@ public class FancyTitle
          }
         return steps;
     }
-
-    
     public static String repeatChar(char c, int cnt) 
     {
       //Creates how many repititions of char into 1 string 
@@ -63,18 +78,19 @@ public class FancyTitle
         return final_border;
     }
 
-    public static String[] makeFooter(char c, int desiredLen) 
-    {
-      
-    }
-
-    public static String createFancyTitle(String message, char c) 
-    {
-      //insert code here
-    } 
-        
-    public static void main(String args[]) 
-    {
-    System.out.println(countFibSteps(10));
-    }
 }
+/*
+Scanner b = new Scanner(System.in);
+
+System.out.print("Please input the number of blocks: ");
+int block = b.nextInt();
+for (int a = 0; a < block; a++)
+{
+    for(int e = block; e < block + a; e++)
+    {
+        System.out.print("#");
+    }
+    System.out.println();
+}
+b.close();*/      
+

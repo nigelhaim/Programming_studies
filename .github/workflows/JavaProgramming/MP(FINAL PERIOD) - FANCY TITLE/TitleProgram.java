@@ -1,4 +1,4 @@
-//Darlene Alberto
+//Nigel Sebastian
 import java.util.Scanner;
 public class TitleProgram
 {
