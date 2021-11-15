@@ -1,6 +1,11 @@
-import javax.sound.sampled.Line;
+//This file was used for testing each method of the title program of Machine problem requirement in UST
+
+
+
+
+/*import javax.sound.sampled.Line;
 import javax.swing.border.Border;
-import java.util.*;
+import java.util.*;*/
 
 
 public class Java_tester_fancytitle 
