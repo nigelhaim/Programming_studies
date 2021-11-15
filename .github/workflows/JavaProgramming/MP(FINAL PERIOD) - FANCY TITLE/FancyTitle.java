@@ -81,7 +81,31 @@ public class FancyTitle
 
     public static String createFancyTitle(String message, char c) 
     {
+
+      int mesg = (message.length()) + 4;
+      int mess = message.length();
+      String up_down = repeatChar(c, mesg) + "\n";
+      String border_char = Character.toString(c);
+      char space = ' ';
+      String outp_arr_bot ="";
+      String outp_arr_top ="";
+      String footer[] = makeFooter(c, mesg);
+      int foot_length = footer.length;
+      for (int lnm = (foot_length - 1); lnm < foot_length && lnm > -1; lnm--)
+      {
+        String ft = footer[lnm];
+        outp_arr_top += ft + "\n";
+      }
       
+      for (int lnm = 0; lnm < foot_length; lnm++)
+      {
+        String ft = footer[lnm];
+        outp_arr_bot += ft + "\n";
+      }
+
+
+      String output = up_down + outp_arr_top + border_char + space + message + space + border_char + "\n" + outp_arr_bot + up_down;
+      return output;  
     } 
         
     public static void main(String args[]) 
