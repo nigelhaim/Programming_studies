@@ -9,12 +9,15 @@ subprocess.check_call([sys.executable, '-m', 'pip', 'install',
 
 from pyfiglet import Figlet
 print("\n")
-name = input("Enter your name: ")
-
-def render(text, name):
+def render(text):
     f = Figlet()
     print('\n' * 10)
-    print(f.renderText(text))
-    print(f.renderText(name))
+    a = f.renderText(text)
+    print(a)
 
-render('Hello', name)
+
+render('Submitted by Maui')
+
+
+subprocess.check_call([sys.executable, '-m', 'pip', 'uninstall', 
+'pyfiglet',])
