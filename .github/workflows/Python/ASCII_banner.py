@@ -16,7 +16,7 @@ def render(text):
     print(a)
 
 
-render('Submitted by Maui')
+render('Edit this text')
 
 
 subprocess.check_call([sys.executable, '-m', 'pip', 'uninstall', 

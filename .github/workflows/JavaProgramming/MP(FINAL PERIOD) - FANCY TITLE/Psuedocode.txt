@@ -1,0 +1,68 @@
+repeatChar(char c, int cnt)
+	String prt = toString(c), repeat(cnt)
+	return prt
+
+makeFilledCenterString(String border, int desiredLen)
+	int brd_len = border lenght;
+	char spc = ' '
+	int space = desiredLen - (brd_len * 2)
+	String space_string = repeatchar(spc, space)
+
+	String finalborder = border + spaceString + border
+	return final border
+
+makeFibStringList(char c, int levels)
+	int current = 1
+	int previous = 1
+	int newVal = 0
+
+	String[] strchr = String[levels]
+
+	for (int count = 0; count < levels; count++)
+		String fprt = repeatChar(c, current)
+		strchr = [count] = fprt
+
+		newVal = current + previous
+		previous = current
+		current = newVal
+
+	return strchr
+
+ makeFooter(char c, int desiredLen)
+ 	int fibstr = countFibSteps(desiredLen / 2)
+ 	String fibarray[] = makeFibStringList(c, fibstr)
+ 	String arrfooter[] = new String[fibstr]
+
+ 	for(int lvl = 0; lvl < fibstr; lvl++)
+ 		String border = fibarray[lvl]
+ 		String line = makeFilledCenterString(border,desiredLen);
+
+ 		arrfooter[lvl] = line
+
+ 	return arrfooter
+
+ CreateFancyTitle(String message, char c)
+ 	int mesg = (message lenght) + 4 
+ 	String updown = repeatChar(c, mesg) \n
+ 	String borderchar = toString(c)
+
+ 	char space = ' '
+
+ 	String bottompart = ""
+ 	String upperpart = ""
+
+ 	String footer[] = makeFooter(c, mesg)
+
+ 	int footlenght = lenght of footer[]
+
+ 	for(int lnm = (footlenght) - 1; lnm footlenght && lnm > -1; lnm--)
+ 		String ft = footer[lnm]
+ 		upperpart += ft \n
+
+ 	for (int lnm = 0; lnm < foot_length; lnm++)
+ 		String ft = footer[lnm]
+ 		bottompart = ""
+
+ 	String output = updown + upperpart + borderchar + space + message + space + borderchar + \n + bottompart + updown
+
+ 	retrun output
