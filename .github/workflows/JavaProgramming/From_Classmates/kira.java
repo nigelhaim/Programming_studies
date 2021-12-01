@@ -4,7 +4,6 @@ public class kira
 {
     public static void main(String[] args) 
     {                          //This was returned or made by makeFibStringlist
-        String[] footerList = {"*", "**", "***", "****", "*****"};
         //if c = '*' and desiredLen = 20
         
     }  

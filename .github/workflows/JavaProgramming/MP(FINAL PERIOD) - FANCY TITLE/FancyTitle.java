@@ -32,8 +32,6 @@ public class FancyTitle
     public static String[] makeFibStringList(char c, int levels)
     {
       //This method creates an array of strings that will look like a half pyramid that is based on the fibbonachi sequence
-
-
       //Initiates variables like in the fibonacchi 
       int current = 1;
       int previous = 1;
@@ -103,7 +101,6 @@ public class FancyTitle
           //Appends the string to the array 
           arr_footer[lvl] = line;
       }
-      
       //Returns the array 
       return arr_footer;
     }
