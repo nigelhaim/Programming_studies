@@ -1,5 +1,4 @@
 package two_d_arrays_for_each;
-import java.util.*;
 public class add_add_average 
 {
     public static void main(String[] args) 
