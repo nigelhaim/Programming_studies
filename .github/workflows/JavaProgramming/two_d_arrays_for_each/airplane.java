@@ -1,6 +1,5 @@
 package two_d_arrays_for_each;
 
-import java.security.DrbgParameters.NextBytes;
 import java.util.Scanner;
 
 public class airplane 
@@ -64,40 +63,57 @@ public class airplane
         {
             int col = 0;
             int row = 0;
-             System.out.print("Passenger # " + (cnt + 1) + "\n");
-             System.out.print("Please input ticket type (F | B | E): ");
-             char type = validation_type(seater.next().toUpperCase().charAt(0));
-             
-            row = row_selector(type);
-
-             System.out.print("Letter (A|B|C|D|E|F): ");
-             char Letter = validation_char(seater.next().toUpperCase().charAt(0));
-             switch (Letter) 
-             {
-                case 'A':
-                    col = 0;
-                    break;
-                case 'B':
-                    col = 1;
-                    break;
-                case 'C':
-                    col = 2;
-                    break;
-                case 'D':
-                    col = 3;
-                    break;
-                case 'E':
-                    col = 4;
-                    break;
-                case 'F':
-                    col = 5;
-                    break;
-             }
-             air[row][col] = 'X';
-             System.out.println();
+            System.out.print("Passenger # " + (cnt + 1) + "\n");
+            row = row_maker(row);
+            col = col_maker(col);
+            while (air[row][col] == 'X')
+            {
+                System.out.println("This seat has already been taken!");
+                row = row_maker(row);
+                col = col_maker(col);
+            }
+            air[row][col] = 'X';
+            System.out.println(); 
         }
         return air;
     }
+    static int row_maker(int row)
+    {
+        System.out.print("Please input ticket type (F | B | E): ");
+        char type = validation_type(seater.next().toUpperCase().charAt(0));
+        
+        row = row_selector(type);
+        return row;
+    }
+
+    static int col_maker(int col)
+    {
+        System.out.print("Letter (A|B|C|D|E|F): ");
+        char Letter = validation_char(seater.next().toUpperCase().charAt(0));
+        switch (Letter) 
+        {
+            case 'A':
+                col = 0;
+                break;
+            case 'B':
+                col = 1;
+                break;
+            case 'C':
+                col = 2;
+                break;
+            case 'D':
+                col = 3;
+                break;
+            case 'E':
+                col = 4;
+                break;
+            case 'F':
+                col = 5;
+                break;
+        }
+        return col;
+    }
+
     static char validation_type(char a)
     {
         while (a != 'F' && a != 'B' && a != 'E')
@@ -113,14 +129,15 @@ public class airplane
     {
         int row = 0;
         int temp = 0;
+        String prompt = "Please input new row: ";
         if (a == 'F')
         {
             System.out.print("Row (1 | 2): ");
             temp = validation_row(seater.nextInt());
-            while (row < 1 && row > 2)
+            while (temp < 1 || temp > 2)
             {
                 System.out.println("First class seats are rows 1 and 2!");
-                System.out.print("Please input new row: ");
+                System.out.print(prompt);
                 temp = validation_row(seater.nextInt());
             }
             row = temp - 1;
@@ -129,11 +146,10 @@ public class airplane
         {
             System.out.print("Row (3 to 7): ");
             temp = validation_row(seater.nextInt());
-            while (row < 3 && row > 7)
+            while (temp < 3 || temp > 7)
             {
-
                 System.out.println("Business class seats are rows from 3 to 7!");
-                System.out.print("Please input new row: ");
+                System.out.print(prompt);
                 temp = validation_row(seater.nextInt());
             }
             row = temp - 1;  
@@ -142,11 +158,11 @@ public class airplane
         {
             System.out.print("Row (8 to 13): ");
             temp = validation_row(seater.nextInt());
-            while (row < 8 && row > 13)
+            while (temp < 8 || temp > 13)
             {
 
                 System.out.println("Economy class seats are rows from 3 to 7!");
-                System.out.print("Please input new row: ");
+                System.out.print(prompt);
                 temp = validation_row(seater.nextInt());
             }
             row = temp - 1; 
