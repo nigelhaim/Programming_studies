@@ -1,7 +1,6 @@
 package two_d_arrays_for_each;
 import java.util.*;
 
-import javax.sound.midi.SysexMessage;
 public class generators 
 {
     static Scanner gen = new Scanner(System.in);
