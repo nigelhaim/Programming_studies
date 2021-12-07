@@ -4,7 +4,6 @@ import java.util.*;
 Submitted by: Nigel Haim N. Sebastian 
     1. Write a program that will get N numbers
     2. Modify problem 1 such that it will also compute and display the numbers entered. 
-    3. Write a program that will compute the factorial of integer N. 
 */
 public class N_numbers 
 {
