@@ -16,17 +16,21 @@ public class arraynum
     static int [][] sortArray(int [][] array)
     {
         int temp;
-        for (int n = 0; n < array.length; n++)//current element
+        for (int n = 0; n < 1; n++)//current element
         {
-            for(int c = 0; c < array.length - 1; c++)
+            for (int i = 0; i < array[n].length; i++)
             {
-                if (array[n][c] > array[n][c + 1])//if the current element is greater than the next element 
+                for(int c = i + 1; c < array[n].length; c++)
                 {
-                    temp = array[c][n];
-                    array[n][c + 1] = array[n][c];
-                    array[n][c+1] = temp;
+                    if (array[n][i] > array[n][c])//if the current element is greater than the next element 
+                    {
+                        temp = array[c][i];
+                        array[n][i] = array[n][c];
+                        array[n][c] = temp;
+                    }
                 }
             }
+
         }
         return array;
     }
