@@ -25,12 +25,5 @@ public class N_numbers
         }
 
         System.out.println("The sum of all integers is: " + sum + "\n");//Prints the sum
-        int f_fact = 1;
-        for(int fact = 1; fact <= val_N; fact++)
-        {
-            f_fact *= fact;
-        }
-
-        System.out.println("The factorial of " + val_N + " = " + f_fact);
     }
 }
