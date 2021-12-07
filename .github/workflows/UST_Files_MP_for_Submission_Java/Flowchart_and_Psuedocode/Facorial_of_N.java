@@ -12,6 +12,7 @@ public class Facorial_of_N
     
     public static void main(String[] args) 
     {
+        System.out.println("Welcome to the Factorial!");
         System.out.print("Please input the value of N: ");
         int val_N = n.nextInt();
         int f_fact = 1;
