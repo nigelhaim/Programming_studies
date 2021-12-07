@@ -1,9 +1,6 @@
 package Flowchart_and_Psuedocode;
 
 import java.util.*;
-
-import javax.swing.plaf.synth.SynthStyle;
-
 import java.lang.Math;
 /*
 Submitted by: Nigel Haim N. Sebastian
