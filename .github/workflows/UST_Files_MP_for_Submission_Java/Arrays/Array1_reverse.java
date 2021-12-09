@@ -40,6 +40,7 @@ public class Array1_reverse
             System.out.println("  " + var_p + "\t    " + a + "\t\t   " + b + "\t\t   " + c);
             var_p++;
         }
+        System.out.println();
         num.close();
     }    
 }
