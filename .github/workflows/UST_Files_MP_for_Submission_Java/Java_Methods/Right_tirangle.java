@@ -1,7 +1,17 @@
-package Selfpaced_righttri_magnitudeandd_xy;
+package Java_Methods;
 
 import java.util.*;
 import java.lang.Math;
+
+/*
+Submitted by: Nigel Haim N. Sebastian 
+
+Write a java program that accepts the lenghts of 2 sides 
+of a right triangle, a and b, respectively. 
+The program then computes and displays the hypotenuse 
+and the area of the triangle. 
+*/
+
 public class Right_tirangle 
 {
     static Scanner side = new Scanner(System.in);
