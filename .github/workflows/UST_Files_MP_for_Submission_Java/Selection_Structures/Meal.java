@@ -1,4 +1,4 @@
-package Case;
+package Selection_Structures;
 
 import java.util.*;
 
@@ -8,7 +8,7 @@ public class Meal
     {
         Scanner yu = new Scanner(System.in);
 
-        System.out.print("Input Meal Code: ");
+        System.out.print("Input Meal Code (A || B || C): ");
         char mc = yu.nextLine().toUpperCase().charAt(0);
 
         System.out.print("Input Size (Regular - R || Upsize - U): ");
@@ -42,6 +42,7 @@ public class Meal
                     cost = no * 85.70;
                 }
                 break;
+            
             case 'C':
                 if (s == 'R') 
                 {
@@ -51,8 +52,8 @@ public class Meal
                 if (s == 'U')
                 {
                     cost = no * 95.60;
-                }  
-                break;       
+                } 
+                break;        
         }
 
         if (no > 5)
