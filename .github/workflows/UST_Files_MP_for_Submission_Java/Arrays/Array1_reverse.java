@@ -1,3 +1,4 @@
+package Arrays;
 import java.util.Scanner;
 
 public class Array1_reverse 
@@ -9,7 +10,6 @@ public class Array1_reverse
         int[] array_A = new int[10];
         int[] array_B = new int[10];
         int[] array_C = new int[10];
-        int var = 1;
         int var_p = 1;
 
         for (int a = 0; a < 10; a++)
