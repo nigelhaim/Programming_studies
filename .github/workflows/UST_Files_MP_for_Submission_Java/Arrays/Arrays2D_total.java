@@ -1,5 +1,5 @@
-package two_d_arrays_for_each;
-public class add_add_average 
+package Arrays;
+public class Arrays2D_total 
 {
     public static void main(String[] args) 
     {
