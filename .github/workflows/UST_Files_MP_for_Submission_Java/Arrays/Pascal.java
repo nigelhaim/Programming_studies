@@ -1,5 +1,11 @@
 package Arrays;
 import java.util.*;
+
+/*
+Submitted by: Nigel Haim N. Sebastian 
+
+Write a program that producs the first n rows of Pascal's Triangle. 
+*/
 public class Pascal 
 {
     static Scanner in = new Scanner(System.in);
