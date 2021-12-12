@@ -44,8 +44,8 @@ public class First_personal_program
 				double y = mike.nextDouble();
 
 				System.out.println();
-				System.out.print("Input	operator: ");
-				char op = mike.nextLine().charAt(0);
+				System.out.print("Input operator: ");
+				char op = mike.next().charAt(0);
 				double ans = 0;
 
 					if (op == '+')
