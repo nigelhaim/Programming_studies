@@ -23,7 +23,11 @@ public class FancyTitle
     public static String repeatChar(char c, int cnt) 
     {
       //Creates how many repititions of a character into 1 string 
-      String prt = Character.toString(c).repeat(cnt);
+      String prt = "";
+      for (int i = 0; i <= cnt; i++)
+      {
+        prt += Character.toString(c);
+      }
       
       //Returns the created string 
       return prt;
