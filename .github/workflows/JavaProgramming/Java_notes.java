@@ -66,7 +66,6 @@ public class Java_notes
                     Formatter fmt = new Formatter();
                     fmt.format(dec, number);
                     System.out.println( fmt);
-                    
             }
         }
 
