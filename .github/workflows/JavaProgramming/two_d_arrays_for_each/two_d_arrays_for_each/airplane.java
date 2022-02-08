@@ -1,4 +1,4 @@
-package two_d_arrays_for_each;
+
 import java.util.Scanner;
 public class airplane 
 {
