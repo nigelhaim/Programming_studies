@@ -1,0 +1,6 @@
+{
+    "java.project.sourcePaths": [
+        ".github/workflows/JavaProgramming",
+        ".github/workflows/2nd_Sem_DataStructures"
+    ]
+}
