@@ -12,6 +12,7 @@ public class Exponent
          int exp = input.nextInt();
          System.out.println();
          int result = 1;
+         System.out.print("The result is: ");
          compute(base, exp, result);
          System.out.println();
     }
