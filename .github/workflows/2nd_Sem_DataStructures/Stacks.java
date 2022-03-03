@@ -1,4 +1,3 @@
-
 import java.util.*;
 public class Stacks{
    static Scanner input = new Scanner(System.in);
@@ -24,6 +23,7 @@ public class Stacks{
       }
     }
 }
+
 class Stack
 {
    private int maxSize;
