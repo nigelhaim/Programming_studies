@@ -51,7 +51,7 @@ class Stack
       return (top == -1);
            
    }
-   public char peek() {
+   public char peek(){
       return stackArray[top];
    }
 }
