@@ -36,19 +36,23 @@ public class MP3LinkedList
                     if(num_char == 3)//If it is a 3 letter word
                     {
                         three_w.add(n);//Adds to the 3 word list
+                        Collections.sort(three_w);//Sorts the list
                     }
                     if(num_char == 4)//If it is a 3 letter word
                     {
                         four_w.add(n);//Adds to the 4 word list
+                        Collections.sort(four_w);//Sorts the list
                     }
                     else if(num_char > 4)//If it is more than  letters
                     {
                         more_w.add(n);//Adds to the more than 4 letter word list
+                        Collections.sort(more_w);//Sorts the list
                     }
                 }
                 if(status == false && space == true)
                 {
                     Strs.add(n);//If it is a string then adds to the string linked list
+                    Collections.sort(Strs);
                 }
             }
             else if(select == 2)//If the selected menu is 2
@@ -82,7 +86,7 @@ public class MP3LinkedList
             System.out.println("\n");
         }
 
-        System.out.println("System exit\n");
+        System.out.println("System exit\n");//Exits the program
         System.exit(0);
     }
     public static void Menu(){//Displays the main menu
@@ -98,13 +102,16 @@ public class MP3LinkedList
         System.out.println("8. Quit");
     }
 
+    /*Selects the number which 
+    part of the program will be used*/
     public static int Menu_selector()
     {
         System.out.print("Please select action (1 - 8): ");
         int num = in.nextInt();
-        return num;
+        return num;//Returns what number of the selected part of the program
     }
-
+    /* A method that returns the string 
+    input when 1 in the menu is selected */
     public static String inputString()
     {
         Scanner str_in = new Scanner(System.in);
@@ -112,29 +119,33 @@ public class MP3LinkedList
         return str_in.nextLine();
     }
 
+    /* Checks if the string is a word or not 
+    based from the individual characters */
     public static boolean Checker(String input)
     {
-        boolean String_status = false;
-        for(int i = 0; i < input.length(); i++)
+        boolean String_status = false;//Initiates the boolean 
+        for(int i = 0; i < character_counter(input); i++)
         {
             char a = input.charAt(i);
+            /*Loops every character if it is upper or lower case 
+            characters based from the ASCII chart*/
             if((a >= 'a' && a <= 'z') || (a >= 'A' && a <= 'Z'))
             {
-                String_status = true;
+                String_status = true;//Returns true
             }
             else
-            {
+            {//if 1 character is not w letter then it breaks and returns false
                 String_status = false;
                 break;
             }
         }
         return String_status;
     }
-
+    /* Method that checks the string if is in sentence form */
     public static boolean Space_check(String input)
     {
         boolean Space_status = false;
-        for(int i = 0; i < input.length(); i++)
+        for(int i = 0; i < character_counter(input); i++)
         {
             char a = input.charAt(i);
             if(a == ' ')
