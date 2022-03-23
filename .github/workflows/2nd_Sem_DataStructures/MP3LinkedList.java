@@ -1,3 +1,4 @@
+//Nigel Haim N. Sebastian
 import java.util.*;//Import utility class
 public class MP3LinkedList
 {
@@ -69,19 +70,29 @@ public class MP3LinkedList
             }
             else if(select == 5)//If the selected menu is 5
             {
-                System.out.print("Word to delete: ");
-                String d = in.next();
+                printer(three_w);//Prints the 3 letter word linked list
+                System.out.print("\nThe index of the word to be deleted (Start the count from 0): ");
+                int d = in.nextInt();
                 deleter(three_w, d);//Deletes the string in the list based from the input string
             }
             else if(select == 6)//If the selected menu is 6
             {
-                System.out.print("Word to delete: ");
-                String d = in.next();
+                printer(four_w);//Prints the 3 letter word linked list
+                System.out.print("\nThe index of the word to be deleted (Start the count from 0): ");
+                int d = in.nextInt();
                 deleter(four_w, d);//Deletes the strign in the list based from the input string
             }
             else if(select == 7)//If the selected menu is 7
             {
                 printer(more_w);//Displays the words that is more than 4 characters
+            }
+            else if(select == 8)//If the selected menu is 7
+            {
+               break;//Displays the words that is more than 4 characters
+            }
+            else//if the there is invalid selection prompts the user again
+            {
+                System.out.println("Please input a valid number (1 - 8)");
             }
             System.out.println("\n");
         }
@@ -144,11 +155,12 @@ public class MP3LinkedList
     /* Method that checks the string if is in sentence form */
     public static boolean Space_check(String input)
     {
-        boolean Space_status = false;
+        boolean Space_status = false;//Initiates the boolean
+        //Loops to check if there is a space and returns if there is a space 
         for(int i = 0; i < character_counter(input); i++)
         {
             char a = input.charAt(i);
-            if(a == ' ')
+            if(a == ' ')//Checks each character if it is a space based on the ASCII chart
             {
                 Space_status = true;
                 break;
@@ -160,7 +172,7 @@ public class MP3LinkedList
         }
         return Space_status;
     }
-
+    /* A method that counts how many characters in a string */
     public static int character_counter(String input)
     {
         int count = 0;
@@ -170,42 +182,49 @@ public class MP3LinkedList
         }
         return count;
     }
-
+    //Prints each sorted lists 
     public static void printer(LinkedList list){
-        boolean item = checkItems(list);
+        boolean item = checkItems(list);//Checks if the list is empty
         if(item){
             System.out.println("\nThe list of strings:");
             for(int p = 0; p < list.size(); p++)
-            {
+            {//Loops that gets every value in the list
                 System.out.print(list.get(p));
-                if(p == list.size() - 1)
+                if(p == list.size() - 1)//Prints if there is another string or not
                 {
                     System.out.print("");
                 }
                 else
                 {
-                    System.out.print(", ");
+                    System.out.print(", ");//Prints , if there is an another string 
                 }
             }
         }
-        else{
+        else{//If list is empty then prompts the user
             System.out.println("\nThe list is empty!");
         }
     }
 
-    public static void deleter(LinkedList a, String b)
+    /*Method that deletes the string on a list based from the user input*/
+    public static void deleter(LinkedList a, int b)
     {
-        for(int i = 0; i < a.size(); i++){
-            if(a.get(i).equals(b))
+        while(b < a.size())
+        {
+            if (b <= a.size())
             {
-                a.remove(i);
+                a.remove(b);//Deletes the selected string
                 return;
             }
+            else
+            {//If the input is invalid
+                System.out.println("\nInput a valid number!");
+                System.out.print("The index of the word to be deleted (Start the count from 0): ");
+                b = in.nextInt();
+            }
         }
-        System.out.println("Word does not exist");
     }
 
-    public static boolean checkItems(LinkedList list)
+    public static boolean checkItems(LinkedList list)//Checks if the lists is empty or not
     {
         boolean check;
         if(list.size() != 0)
