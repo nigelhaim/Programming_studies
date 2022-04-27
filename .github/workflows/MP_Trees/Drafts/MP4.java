@@ -111,6 +111,48 @@ class Tree{
         System.out.print(node.data + " "); 
        
     }
+
+    public void search(Tnode node, int value)
+    {
+        if(node == null)
+        {
+            return;
+        }
+        if(value == node.data)
+        {
+            System.out.print("Found " + value);
+        }
+        else if(value < node.data)
+        {
+            search(node.leftChild, value);
+        }
+
+        else if(value > node.data)
+        {
+            search(node.rightChild, value);
+        }
+
+    }
+
+    void tree_printer(Tnode node)
+    {
+        if(node == null)
+        {
+            return;
+        }
+        if(node != null)
+        {
+            System.out.println(node.data);
+        }
+        if(node.leftChild != null)
+        {
+            System.out.print(node.leftChild.data);
+        }
+        if(node.rightChild != null)
+        {
+            System.out.println(node.rightChild.data);
+        } 
+    }
 }
 
 public class MP4 
@@ -119,8 +161,6 @@ public class MP4
     {
         Tree a = new Tree();
         Tnode root = null;
-        root = a.push(root, 'A');   
-        root = a.push(root, 'B');   
         root = a.push(root, 7);   
         root = a.push(root, 6);        
         root = a.push(root, 8);
@@ -138,5 +178,12 @@ public class MP4
 
         System.out.print("\n" + "Postorder: ");
         a.postorderTraversal(root);
+
+        a.search(root, 20);
+
+        System.out.println();
+        System.out.println();
+
+        a.tree_printer(root);
     }
 }

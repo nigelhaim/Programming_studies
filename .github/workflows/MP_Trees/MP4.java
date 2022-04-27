@@ -4,7 +4,6 @@
  */
 
 import java.util.*;
-
 class Tnode
 {
     Tnode leftChild;
@@ -27,6 +26,35 @@ class Tree{
     public Tnode new_node(int k){
         Tnode n_node  = new Tnode(k);
         return n_node;
+    }
+
+    public void search(Tnode node, int value)
+    {
+        if(node == null)
+        {
+            return;
+        }
+        if(value == node.data)
+        {
+            if(character)
+            {
+                System.out.print("Found node with the value of: " + (char)value);
+            }
+            else 
+            {
+                System.out.print("Found node with the value of: " + value);
+            }
+        }
+        else if(value < node.data)
+        {
+            search(node.leftChild, value);
+        }
+
+        else if(value > node.data)
+        {
+            search(node.rightChild, value);
+        }
+
     }
     
     public Tnode push(Tnode node, int value){
@@ -130,6 +158,8 @@ class Tree{
         data_printer(node);
        
     }
+
+    
 }
 
 public class MP4
@@ -139,6 +169,7 @@ public class MP4
     {
         Tree rawTree = new Tree();
         Tnode root = null;
+        boolean existance = false;
         boolean integer = false;
         boolean looping = true;
         while (looping)
@@ -174,7 +205,7 @@ public class MP4
                                     rawTree.make_character(true);
                                     integer = false;
                                 }
-    
+                                existance = true;
                                 looping1  = false;
                             }
                             catch (InputMismatchException e)
@@ -208,24 +239,62 @@ public class MP4
                     }
                     else if (num == 5)
                     {
-
-                    }
-                    else if (num == 6)//Insert a Node in BST
-                    {
-                        System.out.print("Insert Node Value: ");
                         if(integer)
                         {
-                            int input = in.nextInt();
-                            root = rawTree.push(root, input);    
+                            System.out.print("Enter the desired integer: ");
+                            int search = in.nextInt();
+                            rawTree.search(root, search);
                         }
                         else
                         {
-                            char input = in.next().toUpperCase().charAt(0);
-                            root = rawTree.push(root, input);   
+                            System.out.print("Enter the desired character: ");
+                            char search = in.next().toUpperCase().charAt(0);
+                            rawTree.search(root, search);
+                        }
+                    }
+                    else if (num == 6)//Insert a Node in BST
+                    {
+                        if(existance)
+                        {
+                            System.out.print("Insert Node Value: ");
+                            if(integer)
+                            {
+                                int input = in.nextInt();
+                                root = rawTree.push(root, input);    
+                            }
+                            else
+                            {
+                                char input = in.next().toUpperCase().charAt(0);
+                                while(!(input >= 'A' && input <= 'Z'))
+                                {
+                                    System.out.println("Invalid input only A-Z: ");
+                                    input = in.next().toUpperCase().charAt(0);
+                                }
+                                if(input >= 'A' && input <= 'Z')
+                                {
+                                    root = rawTree.push(root, input);  
+                                } 
+                            }
+                        }
+
+                        else
+                        {
+                            System.out.println("Please create a Binary Search tree!");
                         }
                     }
                     else if (num == 7)
                     {
+                        System.out.print("Input the node value to be deleted: ");
+                        if(integer)
+                        {
+                            int input = in.nextInt();
+                            root = rawTree.pop(root, input);    
+                        }
+                        else
+                        {
+                            char input = in.next().toUpperCase().charAt(0);
+                            root = rawTree.pop(root, input);   
+                        }
 
                     }
                     else if (num == 8)
@@ -251,8 +320,8 @@ public class MP4
         System.out.println();
         System.out.println("Menu\n");
         System.out.println("1. Create a Binary Search Tree (BST)");
-        System.out.println("2. Create a Syntax Tree for an Arithmetic Expression");
-        System.out.println("3. Display Binary Tree");
+        System.out.println("2. Create a Syntax Tree for an Arithmetic Expression //Not working");
+        System.out.println("3. Display Binary Tree //Not working");
         System.out.println("4. Traverse Binary Tree");
         System.out.println("5. Search a Node in BST");
         System.out.println("6. Insert a Node in BST");
