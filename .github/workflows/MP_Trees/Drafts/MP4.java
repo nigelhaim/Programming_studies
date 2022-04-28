@@ -153,6 +153,74 @@ class Tree{
             System.out.println(node.rightChild.data);
         } 
     }
+
+    void node_printer(Tnode node)
+    {
+        if(node.leftChild != null || node.rightChild != null)
+        {
+            System.out.print(node.data + " ");
+            if(node.leftChild != null)
+            {
+                node_printer(node.leftChild);
+            }
+            if(node.rightChild != null)
+            {
+                node_printer(node.rightChild);
+            }
+
+        }
+
+        /*if(node.leftChild != null || node.rightChild != null)
+        {
+            System.out.print(node.data);
+            if(node.leftChild != null && node.rightChild != null)
+            {
+                node_printer(node.rightChild);
+            }
+
+        }*/
+    }
+
+    void node_printer_external(Tnode node)
+    {
+        if(node.leftChild == null && node.rightChild == null)
+        {
+            System.out.print(node.data + " ");
+        }
+        if(node.leftChild != null)
+        {
+            node_printer_external(node.leftChild); 
+        }
+        if(node.rightChild != null)
+        {
+            node_printer_external(node.rightChild);   
+        }
+
+        if(node == null)
+        {
+            return;
+        }
+    }
+
+    public int treeHeight(Tnode node)
+    {
+        int leftHeight = 0;
+        int rightHeight = 0;
+
+        if(node.leftChild != null)
+        {
+            leftHeight = treeHeight(node.leftChild);
+        }
+
+        if(node.rightChild != null)
+        {
+            rightHeight = treeHeight(node.rightChild);
+        }
+
+        int max_height = (leftHeight > rightHeight) ? leftHeight : rightHeight;
+
+        return (max_height + 1);
+    }
 }
 
 public class MP4 
@@ -161,16 +229,18 @@ public class MP4
     {
         Tree a = new Tree();
         Tnode root = null;
-        root = a.push(root, 7);   
-        root = a.push(root, 6);        
-        root = a.push(root, 8);
+        root = a.push(root, 10);   
+        root = a.push(root, 11);        
+        root = a.push(root, 7);
         root = a.push(root, 20);
+        root = a.push(root, 6);
+        root = a.push(root, 8);
         root = a.push(root, 1);
         root = a.push(root, 9);
         root = a.push(root, 14);
         root = a.push(root, 22);
 
-        System.out.print("Inorder: ");
+        /*System.out.print("Inorder: ");
         a.inorderTraversal(root);
 
         System.out.print("\n" + "Preorder: ");
@@ -184,6 +254,11 @@ public class MP4
         System.out.println();
         System.out.println();
 
-        a.tree_printer(root);
+        //a.tree_printer(root);*/
+        a.node_printer(root);
+        System.out.println();
+        a.node_printer_external(root);
+        System.out.println();
+        System.out.println(a.treeHeight(root));
     }
 }

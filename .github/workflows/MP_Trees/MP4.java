@@ -1,4 +1,5 @@
-/* ABUSAMAN, Farida A.
+/* 
+ *ABUSAMAN, Farida A.
  * SEBASTIAN, Nigel Haim N.
  * 1CSA
  */
@@ -110,7 +111,7 @@ class Tree{
 
         Tnode temp_node = node.rightChild;
 
-        while(temp_node !=null){
+        while(temp_node != null){
             temp_node = temp_node.leftChild;
         }
         return temp_node;
@@ -159,6 +160,62 @@ class Tree{
        
     }
 
+    void node_printer_internalNodes(Tnode node)
+    {
+        if(node.leftChild != null || node.rightChild != null)
+        {
+            System.out.print(node.data);
+            if(node.leftChild != null)
+            {
+                node_printer_internalNodes(node.leftChild);
+            }
+            if(node.rightChild != null)
+            {
+                node_printer_internalNodes(node.rightChild);
+            }
+
+        }
+    }
+
+    void node_printer_externalNodes(Tnode node)
+    {
+        if(node.leftChild == null && node.rightChild == null)
+        {
+            System.out.print(node.data + " ");
+        }
+        if(node.leftChild != null)
+        {
+            node_printer_externalNodes(node.leftChild); 
+        }
+        if(node.rightChild != null)
+        {
+            node_printer_externalNodes(node.rightChild);   
+        }
+
+        if(node == null)
+        {
+            return;
+        }
+    }
+    public int treeHeight(Tnode node)
+    {
+        int leftHeight = 0;
+        int rightHeight = 0;
+
+        if(node.leftChild != null)
+        {
+            leftHeight = treeHeight(node.leftChild);
+        }
+
+        if(node.rightChild != null)
+        {
+            rightHeight = treeHeight(node.rightChild);
+        }
+
+        int max_height = (leftHeight > rightHeight) ? leftHeight : rightHeight;
+
+        return (max_height + 1);
+    }
     
 }
 
@@ -172,6 +229,7 @@ public class MP4
         boolean existance = false;
         boolean integer = false;
         boolean looping = true;
+        int number_of_nodes = 0;
         while (looping)
         {
             try
@@ -219,23 +277,43 @@ public class MP4
                     }
                     else if (num == 2)
                     {
-
+                        
                     }
                     else if (num == 3)
                     {
-
+                        System.out.println();
+                        System.out.print("The internal nodes of the binary tree: ");
+                        rawTree.node_printer_internalNodes(root);
+                        System.out.println();
+                        System.out.print("The external nodes of the binary tree: ");
+                        rawTree.node_printer_externalNodes(root);
+                        System.out.println();
+                        System.out.print("The number of edges in a binary tree: " + (number_of_nodes - 1));
+                        System.out.println();
+                        System.out.print("The height of the binary Tree: ");
+                        System.out.print(rawTree.treeHeight(root));
+                        System.out.println();
                     }
                     else if (num == 4)
                     {
-                        System.out.print("Inorder: ");
-                        rawTree.inorderTraversal(root);
-                
-                        System.out.print("\n" + "Preorder: ");
-                        rawTree.preorderTraversal(root);
-                
-                        System.out.print("\n" + "Postorder: ");
-                        rawTree.postorderTraversal(root);
-                        System.out.println();
+                        if(existance)
+                        {
+                            System.out.print("Inorder: ");
+                            rawTree.inorderTraversal(root);
+                    
+                            System.out.print("\n" + "Preorder: ");
+                            rawTree.preorderTraversal(root);
+                    
+                            System.out.print("\n" + "Postorder: ");
+                            rawTree.postorderTraversal(root);
+                            System.out.println();
+                        }
+
+                        else
+                        {
+                            System.out.print("Tree doesn't exist! \nPlease create a tree");
+                            continue;
+                        }
                     }
                     else if (num == 5)
                     {
@@ -254,33 +332,26 @@ public class MP4
                     }
                     else if (num == 6)//Insert a Node in BST
                     {
-                        if(existance)
+                        System.out.print("Insert Node Value: ");
+                        if(integer)
                         {
-                            System.out.print("Insert Node Value: ");
-                            if(integer)
-                            {
-                                int input = in.nextInt();
-                                root = rawTree.push(root, input);    
-                            }
-                            else
-                            {
-                                char input = in.next().toUpperCase().charAt(0);
-                                while(!(input >= 'A' && input <= 'Z'))
-                                {
-                                    System.out.println("Invalid input only A-Z: ");
-                                    input = in.next().toUpperCase().charAt(0);
-                                }
-                                if(input >= 'A' && input <= 'Z')
-                                {
-                                    root = rawTree.push(root, input);  
-                                } 
-                            }
+                            int input = in.nextInt();
+                            root = rawTree.push(root, input);    
                         }
-
                         else
                         {
-                            System.out.println("Please create a Binary Search tree!");
+                            char input = in.next().toUpperCase().charAt(0);
+                            while(!(input >= 'A' && input <= 'Z'))
+                            {
+                                System.out.println("Invalid input only A-Z: ");
+                                input = in.next().toUpperCase().charAt(0);
+                            }
+                            if(input >= 'A' && input <= 'Z')
+                            {
+                                root = rawTree.push(root, input);  
+                            } 
                         }
+                        number_of_nodes++;
                     }
                     else if (num == 7)
                     {
@@ -301,7 +372,6 @@ public class MP4
                     {
                         quitProgram();
                     }
-                
                 } while (num != 8);
 
                 looping = false;
