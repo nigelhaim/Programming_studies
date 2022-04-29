@@ -227,10 +227,11 @@ public class MP4
         Tree rawTree = new Tree();
         Tnode root = null;
         boolean existance = false;
+        boolean bst = false;
         boolean integer = false;
         boolean looping = true;
         int number_of_nodes = 0;
-        while (looping)
+        while (looping)     
         {
             try
             {
@@ -264,6 +265,7 @@ public class MP4
                                     integer = false;
                                 }
                                 existance = true;
+                                bst = true;
                                 looping1  = false;
                             }
                             catch (InputMismatchException e)
@@ -282,12 +284,17 @@ public class MP4
                     else if (num == 3)
                     {
                         System.out.println();
+                        
                         System.out.print("The internal nodes of the binary tree: ");
                         rawTree.node_printer_internalNodes(root);
+                        
                         System.out.println();
+                        
                         System.out.print("The external nodes of the binary tree: ");
                         rawTree.node_printer_externalNodes(root);
+                        
                         System.out.println();
+                        
                         System.out.print("The number of edges in a binary tree: " + (number_of_nodes - 1));
                         System.out.println();
                         System.out.print("The height of the binary Tree: ");
@@ -315,58 +322,66 @@ public class MP4
                             continue;
                         }
                     }
-                    else if (num == 5)
+                    else if (num == 5 && existance)
                     {
-                        if(integer)
+                        if(bst)
                         {
-                            System.out.print("Enter the desired integer: ");
-                            int search = in.nextInt();
-                            rawTree.search(root, search);
-                        }
-                        else
-                        {
-                            System.out.print("Enter the desired character: ");
-                            char search = in.next().toUpperCase().charAt(0);
-                            rawTree.search(root, search);
-                        }
-                    }
-                    else if (num == 6)//Insert a Node in BST
-                    {
-                        System.out.print("Insert Node Value: ");
-                        if(integer)
-                        {
-                            int input = in.nextInt();
-                            root = rawTree.push(root, input);    
-                        }
-                        else
-                        {
-                            char input = in.next().toUpperCase().charAt(0);
-                            while(!(input >= 'A' && input <= 'Z'))
+                            if(integer)
                             {
-                                System.out.println("Invalid input only A-Z: ");
-                                input = in.next().toUpperCase().charAt(0);
+                                System.out.print("Enter the desired integer: ");
+                                int search = in.nextInt();
+                                rawTree.search(root, search);
                             }
-                            if(input >= 'A' && input <= 'Z')
+                            else
                             {
-                                root = rawTree.push(root, input);  
-                            } 
+                                System.out.print("Enter the desired character: ");
+                                char search = in.next().toUpperCase().charAt(0);
+                                rawTree.search(root, search);
+                            }
                         }
-                        number_of_nodes++;
                     }
-                    else if (num == 7)
+                    else if (num == 6 && existance)//Insert a Node in BST
                     {
-                        System.out.print("Input the node value to be deleted: ");
                         if(integer)
                         {
-                            int input = in.nextInt();
-                            root = rawTree.pop(root, input);    
+                            System.out.print("Insert Node Value: ");
+                            if(integer)
+                            {
+                                int input = in.nextInt();
+                                root = rawTree.push(root, input);    
+                            }
+                            else
+                            {
+                                char input = in.next().toUpperCase().charAt(0);
+                                while(!(input >= 'A' && input <= 'Z'))
+                                {
+                                    System.out.println("Invalid input only A-Z: ");
+                                    input = in.next().toUpperCase().charAt(0);
+                                }
+                                if(input >= 'A' && input <= 'Z')
+                                {
+                                    root = rawTree.push(root, input);  
+                                } 
+                            }
+                            number_of_nodes++;
                         }
-                        else
+                    }
+                    else if (num == 7 && existance)
+                    {
+                        if(bst)
                         {
-                            char input = in.next().toUpperCase().charAt(0);
-                            root = rawTree.pop(root, input);   
-                        }
-
+                            System.out.print("Input the node value to be deleted: ");
+                            if(integer)
+                            {
+                                int input = in.nextInt();
+                                root = rawTree.pop(root, input);    
+                            }
+                            else
+                            {
+                                char input = in.next().toUpperCase().charAt(0);
+                                root = rawTree.pop(root, input);   
+                            }
+                        }   
                     }
                     else if (num == 8)
                     {
