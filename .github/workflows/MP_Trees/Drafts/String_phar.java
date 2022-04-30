@@ -39,19 +39,12 @@ public class String_phar
                 m += a;
             }
 
-            //if((a.equals("*") || a.equals("/")) && (!(list.get(j+3).equals("(")) || (list.get(j+3).equals("+") || (list.get(j+3).equals("-")))) && (in_count == 0))
+        
             if((a.equals("*") || a.equals("/")) && (!(list.get(j+2).equals("("))) && (in_count == 0) && (last == false))
             {
                 left = true;
                 break;
             }
-
-            //else if((a.equals("*") || a.equals("/")) && (!(list.get(j-3).equals("(")) || (list.get(j-3).equals("+") || (list.get(j-3).equals("-")))) && (in_count == 0))
-            /*else if((a.equals("*") || a.equals("/") && (in_count == 0) && (last)))
-            {
-                right = true;
-                break;
-            }*/
 
             if((a.equals("+") || a.equals("-")) && (!(list.get(j+2).equals("("))) && (in_count == 0) && (last == false))
             {

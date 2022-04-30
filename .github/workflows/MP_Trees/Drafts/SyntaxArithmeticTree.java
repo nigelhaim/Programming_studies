@@ -110,11 +110,35 @@ class ArithmeticSyntaxTree
             inorderTraversal(node.rightChild);
         }
     }
+
+    public static int evaluation(SATnode node)
+    {
+        int result = 0;
+        if(node.leftChild == null && node.rightChild == null)
+        {
+            return Integer.parseInt(node.data);
+        }
+        else
+        {
+            String op = node.data;
+            int x = evaluation(node.leftChild);
+            int y = evaluation(node.rightChild);
+
+            switch(op)
+            {
+                case("+"): result = x + y; break;
+                case("-"): result = x - y; break;
+                case("*"): result = x * y; break;
+                case("/"): result = x / y; break;
+            }
+        }
+        return result;  
+    }
 }
 public class SyntaxArithmeticTree 
 {    public static void main(String[] args)
     {
-        String original = "((9+(8/2))-(3*4))";
+        String original = "((9+(8/2))*3+(3*4))";
         String[] split = original.split("((?<=[+*/()!])|(?=[+*/()!]))|((?<=\\^)|(?=\\^))|([0-9]+(?<=[-])|(?=[-]))");
         ArithmeticSyntaxTree Tree = new ArithmeticSyntaxTree();
         SATnode root = new SATnode();
@@ -132,6 +156,8 @@ public class SyntaxArithmeticTree
         Tree.pushArray(root, split);
         System.out.println();
         Tree.inorderTraversal(root);
+        System.out.println();
+        System.out.println(Tree.evaluation(root));
     }  
     
     public static String[] precedence(LinkedList<String> list)
