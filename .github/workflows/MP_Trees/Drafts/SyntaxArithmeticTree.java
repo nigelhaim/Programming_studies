@@ -12,12 +12,6 @@ class SATnode
         rightChild = null;
     }
 
-    SATnode(String[] arr)
-    { 
-        array = arr;
-        leftChild = null;
-        rightChild = null;
-    }
     SATnode(String data)
     {
         this.data = data;
@@ -152,7 +146,7 @@ public class SyntaxArithmeticTree
             list.add(add);
         }
         System.out.println(list);
-        //split = precedence(list);
+        split = precedence(list);
         Tree.pushArray(root, split);
         System.out.println();
         Tree.inorderTraversal(root);
