@@ -34,7 +34,7 @@ class ArithmeticSyntaxTree
     int element_counter = 0;
     public SATnode pushArray(SATnode node, String[] value)
     {
-        if(element_counter > value.length)
+        if(element_counter >= value.length)
         {
             return node;
         }
@@ -99,14 +99,10 @@ class ArithmeticSyntaxTree
 
     void inorderTraversal(SATnode node)
     {
-        if(node == null)
-        {
-            System.out.print("null ");
-            return;
+        if(node.data != null);
+        { 
+            System.out.print(node.data + " ");
         }
-
-        System.out.print(node.data + " ");
-
         if(node.leftChild != null){
             inorderTraversal(node.leftChild);
         }
@@ -118,14 +114,83 @@ class ArithmeticSyntaxTree
 public class SyntaxArithmeticTree 
 {    public static void main(String[] args)
     {
-        String a = "((9+(8/2))-(3*4))";
-        String[] list = a.split("((?<=[+*/()!])|(?=[+*/()!]))|((?<=\\^)|(?=\\^))|([0-9]+(?<=[-])|(?=[-]))");
+        String original = "((9+(8/2))-(3*4))";
+        String[] split = original.split("((?<=[+*/()!])|(?=[+*/()!]))|((?<=\\^)|(?=\\^))|([0-9]+(?<=[-])|(?=[-]))");
         ArithmeticSyntaxTree Tree = new ArithmeticSyntaxTree();
         SATnode root = new SATnode();
         int open_count = 0;
 
-        Tree.pushArray(root, list);
+        LinkedList<String> list = new LinkedList<String>();
+
+        for(int i = 0; i < split.length; i++)
+        {
+            String add = split[i];
+            list.add(add);
+        }
+        System.out.println(list);
+        //split = precedence(list);
+        Tree.pushArray(root, split);
         System.out.println();
         Tree.inorderTraversal(root);
-    }    
+    }  
+    
+    public static String[] precedence(LinkedList<String> list)
+    {
+        String[] output = new String[list.size()];
+        list.removeFirst();
+        list.removeLast();
+        int in_count = 0;  
+        boolean left = false;
+        boolean right = false;
+        int counter = 0;
+        boolean last = false;
+        for(int j = 0; j < list.size(); j++)
+        {
+            String a = list.get(j);
+            if(a.equals("("))
+            {
+                in_count++;
+            }
+            else if(a.equals(")"))
+            {
+                in_count--;
+            }
+
+            //if((a.equals("*") || a.equals("/")) && (!(list.get(j+3).equals("(")) || (list.get(j+3).equals("+") || (list.get(j+3).equals("-")))) && (in_count == 0))
+            if((a.equals("*") || a.equals("/")) && (!(list.get(j+2).equals("("))) && (in_count == 0) && (last == false))
+            {
+                left = true;
+                break;
+            }
+
+            if((a.equals("+") || a.equals("-")) && (!(list.get(j+2).equals("("))) && (in_count == 0) && (last == false))
+            {
+                right = true;
+                break;
+            }
+            counter++;
+        }
+
+        if(left)
+        {
+            list.addFirst("(");
+            list.add(counter+3, ")");
+            list.addFirst("(");
+            list.addLast(")");
+        }
+        else if(right)
+        {
+            list.addLast(")");
+            list.add(counter+1, "(");
+            list.addFirst("(");
+            list.addLast(")");
+        }
+
+        for(int f = 0; f < output.length; f++)
+        {
+            String s = list.get(f);
+            output[f] = s;
+        }
+        return output;
+    }
 }
