@@ -31,22 +31,6 @@ class ArithmeticSyntaxTree
         node = new SATnode(k);
         return node;
     }
-
-    /*public SATnode pushleftp(SATnode node)
-    {
-        return node.leftChild;
-    }
-
-    public SATnode pushoperator(SATnode node, String value)
-    {
-        if(node == null)
-        {
-            return new_Tnode(value);
-        }
-        return node.rightChild;
-    }
-    
-    */
     int element_counter = 0;
     public SATnode pushArray(SATnode node, String[] value)
     {
@@ -135,7 +119,6 @@ public class SyntaxArithmeticTree
 {    public static void main(String[] args)
     {
         String a = "((9+(8/2))-(3*4))";
-        //String a = "(1+1)";
         String[] list = a.split("((?<=[+*/()!])|(?=[+*/()!]))|((?<=\\^)|(?=\\^))|([0-9]+(?<=[-])|(?=[-]))");
         ArithmeticSyntaxTree Tree = new ArithmeticSyntaxTree();
         SATnode root = new SATnode();
