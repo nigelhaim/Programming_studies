@@ -4,9 +4,9 @@ public class String_phar
 {
     public static void main(String[] args) 
     {
-        //String s = "((9+(8/2))*3+(3*4))";
+        //String s = "((9+(8/2))+3+(3*4))";
         //String s = "(2*3+4)";
-        String s = "(5*2+(3-4))";
+        String s = "((9+3*8)/(5+10))";
         String[] split = s.split("((?<=[+*/()!])|(?=[+*/()!]))|((?<=\\^)|(?=\\^))|([0-9]+(?<=[-])|(?=[-]))");
         //String[] split = s.split("(?<=\\d)(?=\\D)|(?<=\\D)(?=\\d)");
         LinkedList<String> list = new LinkedList<String>();
@@ -40,15 +40,21 @@ public class String_phar
             }
 
         
-            if((a.equals("*") || a.equals("/")) && (!(list.get(j+2).equals("("))) && (in_count == 0) && (last == false))
+            if((a.equals("*") || a.equals("/")) && ((list.get(j-1).equals(")"))) && !(list.get(j+1).equals(")")) &&(in_count == 0) && (left == false))
             {
                 left = true;
                 break;
             }
 
-            if((a.equals("+") || a.equals("-")) && (!(list.get(j+2).equals("("))) && (in_count == 0) && (last == false))
+            if((a.equals("*") || a.equals("/")) && (((list.get(j-2).equals("+"))) || ((list.get(j-2).equals("-"))) && (in_count == 0)) && (left == false))
             {
                 right = true;
+                break;
+            }
+
+            if((a.equals("+") || a.equals("-")) && !(list.get(j+2).equals("(")) && (list.get(j+2).equals("*") == false) && !(list.get(j+2).equals("/")) && (in_count == 0) && (left == false))
+            {
+                left = true;
                 break;
             }
             counter++;
@@ -64,7 +70,7 @@ public class String_phar
         else if(right)
         {
             list.addLast(")");
-            list.add(counter+1, "(");
+            list.add(counter-1, "(");
             list.addFirst("(");
             list.addLast(")");
         }

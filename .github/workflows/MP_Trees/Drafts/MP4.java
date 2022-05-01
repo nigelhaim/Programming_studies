@@ -1,5 +1,7 @@
 package Drafts;
 
+import java.util.*;
+
 //https://www.youtube.com/watch?v=81PpYQ0AN_w&list=PLt4nG7RVVk1jqwwQUTByTcTcHxIlMllfy                                                                                                                                                                                                                                                                          
 class Tnode
 {
@@ -221,6 +223,81 @@ class Tree{
 
         return (max_height + 1);
     }
+
+    /*void printTree(Tnode node)
+    {
+        if(node == null)
+        {return;}
+
+        if(node != null)
+        {
+            if(node.leftChild != null)
+            {
+                System.out.print(node.leftChild.data);
+            }
+            if(node.rightChild != null)
+            {
+                System.out.print(node.rightChild.data);
+            }
+
+            printTree(node.leftChild);
+            printTree(node.rightChild);
+            
+            if(node.leftChild != null)
+            {
+                printTree(node.leftChild);
+
+            }
+            if(node.rightChild != null)
+            {
+                printTree(node.rightChild);
+            }
+        }
+    }*/
+    public String space(int num)
+    {
+        String s = "";
+
+        for(int i = 0; i < num; i++)
+        {
+            s += "*";
+        }
+        return s;
+    }
+    public void printTree(Tnode tmpRoot, String space) {
+
+        Queue<Tnode> currentLevel = new LinkedList<Tnode>();
+        Queue<Tnode> nextLevel = new LinkedList<Tnode>();
+        String space_middle = " ";
+        currentLevel.add(tmpRoot);
+        while (!currentLevel.isEmpty()) {
+            Iterator<Tnode> iter = currentLevel.iterator();
+            while (iter.hasNext()) {
+                Tnode currentNode = iter.next();
+                space_middle += "*";
+                if (currentNode.leftChild != null) {
+                    nextLevel.add(currentNode.leftChild);
+                }
+                if (currentNode.rightChild != null) {
+                    nextLevel.add(currentNode.rightChild);
+                }
+                 /*if(currentNode.leftChild != null)
+                {
+                    System.out.print(space + currentNode.leftChild.data + space_middle);
+                }
+                if(currentNode.rightChild != null)
+                {
+                    System.out.print(currentNode.rightChild.data);
+                }*/
+                System.out.print(currentNode.data + " ");
+                space_middle += "*";
+                space += "\b";
+            }
+            System.out.println();
+            currentLevel = nextLevel;
+            nextLevel = new LinkedList<Tnode>();
+        }
+    }
 }
 
 public class MP4 
@@ -255,10 +332,18 @@ public class MP4
         System.out.println();
 
         //a.tree_printer(root);*/
-        a.node_printer(root);
+        //a.node_printer(root);
+        a.preorderTraversal(root);
         System.out.println();
-        a.node_printer_external(root);
+        int height = a.treeHeight(root);
+        String space = a.space(height);
+        System.out.print(space);
+        System.out.print(root.data);
         System.out.println();
-        System.out.println(a.treeHeight(root));
+
+        a.printTree(root, space);
+        //a.node_printer_external(root);
+        //System.out.println();
+        //System.out.println(a.treeHeight(root));
     }
 }

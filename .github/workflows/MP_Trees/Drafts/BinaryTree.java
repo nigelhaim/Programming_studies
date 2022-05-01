@@ -120,6 +120,32 @@ class BinaryTree
             inorderTraversal(node.right);
         }
     }
+
+
+    void printTree(BinaryTreeNode node)
+    {
+        if(node != null)
+        {
+            System.out.println();
+            if(node.left != null)
+            {
+                System.out.print(node.left.data);
+            }
+            if(node.right != null)
+            {
+                System.out.print(node.right.data);
+                printTree(node.left);
+            }
+            if(node.left != null)
+            {
+
+            }
+            if(node.right != null);
+            {
+                printTree(node.left);
+            }
+        }
+    }
   
     // Driver program to test above functions
     public static void main(String[] args)
@@ -136,5 +162,9 @@ class BinaryTree
         System.out.println("Inorder Traversal of the"+
                         " constructed Binary Tree is:aaaa");
         tree.inorderTraversal(node);
+
+        System.out.println();
+        System.out.println(node.data);
+        tree.printTree(node);
     }
 }

@@ -127,7 +127,7 @@ class ArithmeticSyntaxTree
     public static int evaluation(SATnode node)
     {
         int result = 0;
-        if(node.leftChild == null && node.rightChild == null)
+        if(node.leftChild != null && node.rightChild != null)
         {
             return Integer.parseInt(node.data);
         }
