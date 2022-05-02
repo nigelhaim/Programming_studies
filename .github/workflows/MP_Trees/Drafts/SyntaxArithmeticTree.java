@@ -132,8 +132,14 @@ class ArithmeticSyntaxTree
 public class SyntaxArithmeticTree 
 {    public static void main(String[] args)
     {
-        String original = "((9+(8/2))*(3*4))";
-        String[] split = original.split("((?<=[+*/()!])|(?=[+*/()!]))|((?<=\\^)|(?=\\^))|([0-9]+(?<=[-])|(?=[-]))");
+        String original = "((9/(8-2))*(3*4))";
+        //String[] split = original.split("(?<=[-+*/])|(?=[-+*/])");
+        String [] split =  new String[original.length()];
+        for(int j = 0; j < split.length; j++)
+        {
+            char c = original.charAt(j);
+            split[j] = Character.toString(c);
+        }
         ArithmeticSyntaxTree Tree = new ArithmeticSyntaxTree();
         SATnode root = new SATnode();
         int open_count = 0;
@@ -146,7 +152,7 @@ public class SyntaxArithmeticTree
             list.add(add);
         }
         System.out.println(list);
-        split = precedence(list);
+        //split = precedence(list);
         Tree.pushArray(root, split);
         System.out.println();
         Tree.inorderTraversal(root);

@@ -20,8 +20,11 @@ class Tnode implements TreePrinter.PrintableNode
         leftChild = null;
         rightChild = null;
     }
-    public void setCharacter(){
-        character = true;
+    public void setCharacter(boolean t){
+        if(t)
+        {
+            character = true;
+        }
     }
     @Override
     public Tnode getLeft() {
@@ -449,7 +452,7 @@ public class MP4
                                     rawTree.make_character(true);
                                     integer = false;
                                     character = true;
-                                    root.setCharacter();
+                                    root.setCharacter(true);
                                 }
                                 BSTexistence = true;
                                 bst = true;
@@ -469,8 +472,12 @@ public class MP4
                         System.out.print("Please input an algebric expression inside a closed Pharentheses\nExample: (((9+(8/2))*3)+(3*4))\n");
                         System.out.print("Enter Expression: ");
                         String original = in.next();
-                        String[] split = original.split("((?<=[+*/()!])|(?=[+*/()!]))|((?<=\\^)|(?=\\^))|([0-9]+(?<=[-])|(?=[-]))");
-                        int open_count = 0;
+                        String [] split =  new String[original.length()];
+                        for(int j = 0; j < split.length; j++)
+                        {
+                            char c = original.charAt(j);
+                            split[j] = Character.toString(c);
+                        }
                 
                         LinkedList<String> list = new LinkedList<String>();
                 
