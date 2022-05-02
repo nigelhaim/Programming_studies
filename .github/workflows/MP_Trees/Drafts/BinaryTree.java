@@ -122,31 +122,19 @@ class BinaryTree
     }
 
 
-    void printTree(BinaryTreeNode node)
-    {
-        if(node != null)
-        {
-            System.out.println();
-            if(node.left != null)
-            {
-                System.out.print(node.left.data);
-            }
-            if(node.right != null)
-            {
-                System.out.print(node.right.data);
-                printTree(node.left);
-            }
-            if(node.left != null)
-            {
-
-            }
-            if(node.right != null);
-            {
-                printTree(node.left);
-            }
+    public void printAtGivenLevel(BinaryTreeNode node) {
+        if (node == null) {
+          return;
         }
-    }
-  
+        
+        if(node.data != null)
+        {
+            System.out.print(node.data + " ");
+        }
+        
+        printAtGivenLevel(node.left);
+        printAtGivenLevel(node.right);
+      }
     // Driver program to test above functions
     public static void main(String[] args)
     {
@@ -165,6 +153,6 @@ class BinaryTree
 
         System.out.println();
         System.out.println(node.data);
-        tree.printTree(node);
+        tree.printAtGivenLevel(node);
     }
 }

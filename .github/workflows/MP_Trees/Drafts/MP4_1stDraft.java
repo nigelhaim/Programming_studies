@@ -107,6 +107,20 @@ public class MP4_1stDraft
             System.out.print(node.input + " ");
         }
     }
+
+    public void printAtGivenLevel(BinaryNode node, int level) {
+        if (node == null) {
+          return;
+        }
+        
+        if(level == 1) {
+          System.out.print(node.data + " ");
+          return;
+        }
+        
+        printAtGivenLevel(node.left, level - 1);
+        printAtGivenLevel(node.right, level - 1);
+      }
     
     public static void main(String[] args) 
     {

@@ -5,20 +5,48 @@
  */
 
 import java.util.*;
-class Tnode
+
+
+
+class Tnode implements TreePrinter.PrintableNode
 {
     Tnode leftChild;
     Tnode rightChild;
     int data;
+    boolean character; 
     Tnode(int data)
     {
         this.data = data;
         leftChild = null;
         rightChild = null;
+    }
+    public void setCharacter(){
+        character = true;
+    }
+    @Override
+    public Tnode getLeft() {
+        return leftChild;
     }  
-}
 
-class SATnode
+    @Override
+    public Tnode getRight() {
+        return rightChild;
+    }
+
+    @Override
+    public String getText() {
+        if(character)
+        {
+            char r = (char)data;
+            return Character.toString(r);
+        }
+        else 
+        {
+            return Integer.toString(data);
+        }
+    }
+}
+class SATnode implements SATreePrinter.SATPrintableNode
 {
     String data;
     SATnode leftChild;
@@ -34,6 +62,21 @@ class SATnode
     {
         this.data = data;
     }  
+
+    @Override
+    public SATnode getLeft() {
+        return leftChild;
+    }  
+
+    @Override
+    public SATnode getRight() {
+        return rightChild;
+    }
+
+    @Override
+    public String getText() {
+        return data;
+    }
 }
 class ArithmeticSyntaxTree
 {
@@ -127,22 +170,23 @@ class ArithmeticSyntaxTree
     public static int evaluation(SATnode node)
     {
         int result = 0;
-        if(node.leftChild != null && node.rightChild != null)
-        {
+        if(node.leftChild == null && node.rightChild == null){
             return Integer.parseInt(node.data);
         }
         else
         {
             String op = node.data;
-            int x = evaluation(node.leftChild);
-            int y = evaluation(node.rightChild);
-
-            switch(op)
+            if(node.leftChild != null && node.rightChild != null)
             {
-                case("+"): result = x + y; break;
-                case("-"): result = x - y; break;
-                case("*"): result = x * y; break;
-                case("/"): result = x / y; break;
+                int x = evaluation(node.leftChild);
+                int y = evaluation(node.rightChild);
+                switch(op)
+                {
+                    case("+"): result = x + y; break;
+                    case("-"): result = x - y; break;
+                    case("*"): result = x * y; break;
+                    case("/"): result = x / y; break;
+                }
             }
         }
         return result;  
@@ -293,9 +337,13 @@ class Tree{
 
     void node_printer_internalNodes(Tnode node)
     {
-        if(node.leftChild != null || node.rightChild != null)
+        if(node == null)
         {
-            System.out.print(node.data);
+            return;
+        }
+        if(node.leftChild != null && node.rightChild != null)
+        {
+            System.out.print(node.data + " ");
             if(node.leftChild != null)
             {
                 node_printer_internalNodes(node.leftChild);
@@ -304,7 +352,6 @@ class Tree{
             {
                 node_printer_internalNodes(node.rightChild);
             }
-
         }
     }
 
@@ -364,8 +411,11 @@ public class MP4
         boolean SATexistence = false;
         boolean bst = false;
         boolean integer = false;
+        boolean character = false;
         boolean looping = true;
         int number_of_nodes = 0;
+        TreePrinter printer = new TreePrinter();
+        SATreePrinter SATprinter = new SATreePrinter();
         while (looping)     
         {
             try
@@ -398,6 +448,8 @@ public class MP4
                                 {
                                     rawTree.make_character(true);
                                     integer = false;
+                                    character = true;
+                                    root.setCharacter();
                                 }
                                 BSTexistence = true;
                                 bst = true;
@@ -414,7 +466,7 @@ public class MP4
                     }
                     else if (num == 2)
                     {
-                        System.out.print("Please input an algebric expression inside a closed Pharentheses\nExample: ((9+(8/2))*3+(3*4))\n");
+                        System.out.print("Please input an algebric expression inside a closed Pharentheses\nExample: (((9+(8/2))*3)+(3*4))\n");
                         System.out.print("Enter Expression: ");
                         String original = in.next();
                         String[] split = original.split("((?<=[+*/()!])|(?=[+*/()!]))|((?<=\\^)|(?=\\^))|([0-9]+(?<=[-])|(?=[-]))");
@@ -428,29 +480,37 @@ public class MP4
                             list.add(add);
                         }
                         System.out.println(list);
-                        split = precedence(list);
                         SyntaxTree.pushArray(SATroot, split);
                         SATexistence = true;
                     }
                     else if (num == 3)
                     {
-                        System.out.println();
+                        if(BSTexistence)
+                        {
+                            System.out.println();
                         
-                        System.out.print("The internal nodes of the binary tree: ");
-                        rawTree.node_printer_internalNodes(root);
-                        
-                        System.out.println();
-                        
-                        System.out.print("The external nodes of the binary tree: ");
-                        rawTree.node_printer_externalNodes(root);
-                        
-                        System.out.println();
-                        
-                        System.out.print("The number of edges in a binary tree: " + (number_of_nodes - 1));
-                        System.out.println();
-                        System.out.print("The height of the binary Tree: ");
-                        System.out.print(rawTree.treeHeight(root));
-                        System.out.println();
+                            System.out.print("The internal nodes of the binary tree: ");
+                            rawTree.node_printer_internalNodes(root);
+                            
+                            System.out.println();
+                            
+                            System.out.print("The external nodes of the binary tree: ");
+                            rawTree.node_printer_externalNodes(root);
+                            
+                            System.out.println();
+                            
+                            System.out.print("The number of edges in a binary tree: " + (number_of_nodes - 1));
+                            System.out.println();
+                            System.out.print("The height of the binary Tree: ");
+                            System.out.print(rawTree.treeHeight(root));
+                            System.out.println();
+                            printer.print(root);    
+                        }
+
+                        else if(SATexistence)
+                        {
+                            SATprinter.print(SATroot);
+                        }
                     }
                     else if (num == 4)
                     {
@@ -515,20 +575,25 @@ public class MP4
                                 int input = in.nextInt();
                                 root = rawTree.push(root, input);    
                             }
-                            else
-                            {
-                                char input = in.next().toUpperCase().charAt(0);
-                                while(!(input >= 'A' && input <= 'Z'))
-                                {
-                                    System.out.println("Invalid input only A-Z: ");
-                                    input = in.next().toUpperCase().charAt(0);
-                                }
-                                if(input >= 'A' && input <= 'Z')
-                                {
-                                    root = rawTree.push(root, input);  
-                                } 
-                            }
                             number_of_nodes++;
+                        }
+
+                        else if(character)
+                        {
+                            char input = in.next().toUpperCase().charAt(0);
+                            while(!(input >= 'A' && input <= 'Z'))
+                            {
+                                System.out.println("Invalid input only A-Z: ");
+                                input = in.next().toUpperCase().charAt(0);
+                            }
+                            if(input >= 'A' && input <= 'Z')
+                            {
+                                root = rawTree.push(root, input);  
+                            } 
+                        }
+                        else if (!integer && !character)
+                        {
+                            System.out.println("Please make a Binary Search Tree or Arithmetic Syntax tree  first");
                         }
                     }
                     else if (num == 7 && BSTexistence)
@@ -613,9 +678,8 @@ public class MP4
         String[] output = new String[list.size()];
         list.removeFirst();
         list.removeLast();
-        int in_count = 0;  
-        boolean left = false;
-        boolean right = false;
+        int in_count = 0;
+        System.out.println(list);
         int counter = 0;
         boolean last = false;
         for(int j = 0; j < list.size(); j++)
@@ -629,46 +693,309 @@ public class MP4
             {
                 in_count--;
             }
-
-            //if((a.equals("*") || a.equals("/")) && (!(list.get(j+3).equals("(")) || (list.get(j+3).equals("+") || (list.get(j+3).equals("-")))) && (in_count == 0))
-            if((a.equals("*") || a.equals("/")) && (!(list.get(j+2).equals("("))) && (in_count == 0) && (last == false))
+            if((a.equals("*") || a.equals("/")) && (!list.get(j-1).equals(")")) && (!list.get(j+1).equals("(")))
             {
-                left = true;
+                list.add(counter - 1, "(");
+                list.add(counter + 3, ")");
+                list.addFirst("(");
+                list.addLast(")");
+                break;
+            }
+            else if((a.equals("*") || a.equals("/")) && (in_count == 0) && !(list.get(j-1).equals(")") || list.get(j+1).equals("(")))
+            {
+                list.add(counter + 2,")");
+                list.add(counter - 2, "(");
+                list.addFirst("(");
+                list.addLast(")");
                 break;
             }
 
-            if((a.equals("+") || a.equals("-")) && (!(list.get(j+2).equals("("))) && (in_count == 0) && (last == false))
+            else if((a.equals("*") || a.equals("/")) && (list.get(j+2).equals("(") || list.get(j-1).equals(")")) && (in_count == 0))
             {
-                right = true;
+                list.addFirst("(");
+                list.add(counter + 3, ")");
+                list.addFirst("(");
+                list.addLast(")");
+                break;
+            }
+
+            else if((a.equals("*") || a.equals("/")) && (list.get(j+1).equals("(") && list.get(j-3).equals(")")) && (in_count == 0))
+            {
+                list.addLast(")");;
+                list.add(counter - 1, "(");
+                list.addFirst("(");
+                list.addLast(")");
                 break;
             }
             counter++;
         }
-
-        if(left)
+        for(int i = 0; i < output.length; i++)
         {
-            list.addFirst("(");
-            list.add(counter+3, ")");
-            list.addFirst("(");
-            list.addLast(")");
-        }
-        else if(right)
-        {
-            list.addLast(")");
-            list.add(counter+1, "(");
-            list.addFirst("(");
-            list.addLast(")");
-        }
-
-        for(int f = 0; f < output.length; f++)
-        {
-            String s = list.get(f);
-            output[f] = s;
+            output[i] = list.get(i);
         }
         return output;
     }
 }
-/*Tasks:
-    Make Binary Search Tree
-    Make Arithmetic Syntax tree
-    Print Trees*/
+class TreePrinter
+{
+    /** Node that can be printed */
+    public interface PrintableNode
+    {
+        /** Get left child */
+        Tnode getLeft();
+
+
+        /** Get right child */
+        Tnode getRight();
+
+
+        /** Get text to be printed */
+        String getText();
+    }
+
+
+    /**
+     * Print a tree
+     * 
+     * @param root
+     *            tree root node
+     */
+    public static void print(Tnode root)
+    {
+        List<List<String>> lines = new ArrayList<List<String>>();
+
+        List<PrintableNode> level = new ArrayList<PrintableNode>();
+        List<PrintableNode> next = new ArrayList<PrintableNode>();
+
+        level.add(root);
+        int nn = 1;
+
+        int widest = 0;
+
+        while (nn != 0) {
+            List<String> line = new ArrayList<String>();
+
+            nn = 0;
+
+            for (PrintableNode n : level) {
+                if (n == null) {
+                    line.add(null);
+
+                    next.add(null);
+                    next.add(null);
+                } else {
+                    String aa = n.getText();
+                    line.add(aa);
+                    if (aa.length() > widest) widest = aa.length();
+
+                    next.add(n.getLeft());
+                    next.add(n.getRight());
+
+                    if (n.getLeft() != null) nn++;
+                    if (n.getRight() != null) nn++;
+                }
+            }
+
+            if (widest % 2 == 1) widest++;
+
+            lines.add(line);
+
+            List<PrintableNode> tmp = level;
+            level = next;
+            next = tmp;
+            next.clear();
+        }
+
+        int perpiece = lines.get(lines.size() - 1).size() * (widest + 4);
+        for (int i = 0; i < lines.size(); i++) {
+            List<String> line = lines.get(i);
+            int hpw = (int) Math.floor(perpiece / 2f) - 1;
+
+            if (i > 0) {
+                for (int j = 0; j < line.size(); j++) {
+
+                    // split node
+                    char c = ' ';
+                    if (j % 2 == 1) {
+                        if (line.get(j - 1) != null) {
+                            c = (line.get(j) != null) ? '|' : '+';
+                        } else {
+                            if (j < line.size() && line.get(j) != null) c = '+';
+                        }
+                    }
+                    System.out.print(c);
+
+                    // lines and spaces
+                    if (line.get(j) == null) {
+                        for (int k = 0; k < perpiece - 1; k++) {
+                            System.out.print(" ");
+                        }
+                    } else {
+
+                        for (int k = 0; k < hpw; k++) {
+                            System.out.print(j % 2 == 0 ? " " : "-");
+                        }   
+                        System.out.print(j % 2 == 0 ? "+" : "+");
+                        for (int k = 0; k < hpw; k++) {
+                            System.out.print(j % 2 == 0 ? "-" : " ");
+                        }
+                    }
+                }
+                System.out.println();
+            }
+
+            // print line of numbers
+            for (int j = 0; j < line.size(); j++) {
+
+                String f = line.get(j);
+                if (f == null) f = "";
+                int gap1 = (int) Math.ceil(perpiece / 2f - f.length() / 2f);
+                int gap2 = (int) Math.floor(perpiece / 2f - f.length() / 2f);
+
+                // a number
+                for (int k = 0; k < gap1; k++) {
+                    System.out.print(" ");
+                }
+                System.out.print(f);
+                for (int k = 0; k < gap2; k++) {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+
+            perpiece /= 2;
+        }
+    }
+}
+
+class SATreePrinter
+{
+    /** Node that can be printed */
+    public interface SATPrintableNode
+    {
+        /** Get left child */
+        SATnode getLeft();
+
+
+        /** Get right child */
+        SATnode getRight();
+
+
+        /** Get text to be printed */
+        String getText();
+    }
+
+
+    /**
+     * Print a tree
+     * 
+     * @param root
+     *            tree root node
+     */
+    public static void print(SATnode root)
+    {
+        List<List<String>> lines = new ArrayList<List<String>>();
+
+        List<SATPrintableNode> level = new ArrayList<SATPrintableNode>();
+        List<SATPrintableNode> next = new ArrayList<SATPrintableNode>();
+
+        level.add(root);
+        int nn = 1;
+
+        int widest = 0;
+
+        while (nn != 0) {
+            List<String> line = new ArrayList<String>();
+
+            nn = 0;
+
+            for (SATPrintableNode n : level) {
+                if (n == null) {
+                    line.add(null);
+
+                    next.add(null);
+                    next.add(null);
+                } else {
+                    String aa = n.getText();
+                    line.add(aa);
+                    if (aa.length() > widest) widest = aa.length();
+
+                    next.add(n.getLeft());
+                    next.add(n.getRight());
+
+                    if (n.getLeft() != null) nn++;
+                    if (n.getRight() != null) nn++;
+                }
+            }
+
+            if (widest % 2 == 1) widest++;
+
+            lines.add(line);
+
+            List<SATPrintableNode> tmp = level;
+            level = next;
+            next = tmp;
+            next.clear();
+        }
+
+        int perpiece = lines.get(lines.size() - 1).size() * (widest + 4);
+        for (int i = 0; i < lines.size(); i++) {
+            List<String> line = lines.get(i);
+            int hpw = (int) Math.floor(perpiece / 2f) - 1;
+
+            if (i > 0) {
+                for (int j = 0; j < line.size(); j++) {
+
+                    // split node
+                    char c = ' ';
+                    if (j % 2 == 1) {
+                        if (line.get(j - 1) != null) {
+                            c = (line.get(j) != null) ? '|' : '!';
+                        } else {
+                            if (j < line.size() && line.get(j) != null) c = '+';
+                        }
+                    }
+                    System.out.print(c);
+
+                    // lines and spaces
+                    if (line.get(j) == null) {
+                        for (int k = 0; k < perpiece - 1; k++) {
+                            System.out.print(" ");
+                        }
+                    } else {
+
+                        for (int k = 0; k < hpw; k++) {
+                            System.out.print(j % 2 == 0 ? " " : "-");
+                        }   
+                        System.out.print(j % 2 == 0 ? "!" : "!");
+                        for (int k = 0; k < hpw; k++) {
+                            System.out.print(j % 2 == 0 ? "-" : " ");
+                        }
+                    }
+                }
+                System.out.println();
+            }
+
+            // print line of numbers
+            for (int j = 0; j < line.size(); j++) {
+
+                String f = line.get(j);
+                if (f == null) f = "";
+                int gap1 = (int) Math.ceil(perpiece / 2f - f.length() / 2f);
+                int gap2 = (int) Math.floor(perpiece / 2f - f.length() / 2f);
+
+                // a number
+                for (int k = 0; k < gap1; k++) {
+                    System.out.print(" ");
+                }
+                System.out.print(f);
+                for (int k = 0; k < gap2; k++) {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+
+            perpiece /= 2;
+        }
+    }
+}

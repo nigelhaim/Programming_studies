@@ -132,7 +132,7 @@ class ArithmeticSyntaxTree
 public class SyntaxArithmeticTree 
 {    public static void main(String[] args)
     {
-        String original = "((9+(8/2))*3+(3*4))";
+        String original = "((9+(8/2))*(3*4))";
         String[] split = original.split("((?<=[+*/()!])|(?=[+*/()!]))|((?<=\\^)|(?=\\^))|([0-9]+(?<=[-])|(?=[-]))");
         ArithmeticSyntaxTree Tree = new ArithmeticSyntaxTree();
         SATnode root = new SATnode();
@@ -176,36 +176,45 @@ public class SyntaxArithmeticTree
                 in_count--;
             }
 
-            //if((a.equals("*") || a.equals("/")) && (!(list.get(j+3).equals("(")) || (list.get(j+3).equals("+") || (list.get(j+3).equals("-")))) && (in_count == 0))
-            if((a.equals("*") || a.equals("/")) && (!(list.get(j+2).equals("("))) && (in_count == 0) && (last == false))
+        
+
+            if((a.equals("*") || a.equals("/")) && (!list.get(j-1).equals(")")) && (!list.get(j+1).equals("(")))
             {
-                left = true;
+                list.add(counter - 1, "(");
+                list.add(counter + 3, ")");
+                list.addFirst("(");
+                list.addLast(")");
                 break;
             }
 
-            if((a.equals("+") || a.equals("-")) && (!(list.get(j+2).equals("("))) && (in_count == 0) && (last == false))
+            else if((a.equals("*") || a.equals("/")) && (in_count == 0) && !(list.get(j-1).equals(")") || list.get(j+1).equals("(")))
             {
-                right = true;
+                list.add(counter + 2,")");
+                list.add(counter - 2, "(");
+                list.addFirst("(");
+                list.addLast(")");
+                break;
+            }
+
+            else if((a.equals("*") || a.equals("/")) && (list.get(j+2).equals("(") || list.get(j-1).equals(")")) && (in_count == 0))
+            {
+                list.addFirst("(");
+                list.add(counter + 3, ")");
+                list.addFirst("(");
+                list.addLast(")");
+                break;
+            }
+
+            else if((a.equals("*") || a.equals("/")) && (list.get(j+1).equals("(") && list.get(j-3).equals(")")) && (in_count == 0))
+            {
+                list.addLast(")");;
+                list.add(counter - 1, "(");
+                list.addFirst("(");
+                list.addLast(")");
                 break;
             }
             counter++;
         }
-
-        if(left)
-        {
-            list.addFirst("(");
-            list.add(counter+3, ")");
-            list.addFirst("(");
-            list.addLast(")");
-        }
-        else if(right)
-        {
-            list.addLast(")");
-            list.add(counter+1, "(");
-            list.addFirst("(");
-            list.addLast(")");
-        }
-
         for(int f = 0; f < output.length; f++)
         {
             String s = list.get(f);
