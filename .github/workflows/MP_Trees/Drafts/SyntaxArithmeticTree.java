@@ -132,32 +132,36 @@ class ArithmeticSyntaxTree
 public class SyntaxArithmeticTree 
 {    public static void main(String[] args)
     {
-        String original = "((9/(8-2))*(3*4))";
-        //String[] split = original.split("(?<=[-+*/])|(?=[-+*/])");
-        String [] split =  new String[original.length()];
-        for(int j = 0; j < split.length; j++)
-        {
-            char c = original.charAt(j);
-            split[j] = Character.toString(c);
-        }
-        ArithmeticSyntaxTree Tree = new ArithmeticSyntaxTree();
-        SATnode root = new SATnode();
-        int open_count = 0;
-
-        LinkedList<String> list = new LinkedList<String>();
-
+        String original = "(10-(12/2))";
+        String[] split = original.split("(?<=[\\d.])(?=[^\\d.])|(?<=[^\\d.])(?=[\\d.])|(?=[()])|(?<=[()])");
         for(int i = 0; i < split.length; i++)
         {
-            String add = split[i];
-            list.add(add);
+            String c = split[i];
+            System.out.print(c + " || ");
         }
-        System.out.println(list);
-        //split = precedence(list);
-        Tree.pushArray(root, split);
-        System.out.println();
-        Tree.inorderTraversal(root);
-        System.out.println();
-        System.out.println(Tree.evaluation(root));
+        // // for(int j = 0; j < split.length; j++)
+        // // {
+        // //     char c = original.charAt(j);
+        // //     split[j] = Character.toString(c);
+        // // }
+        // // ArithmeticSyntaxTree Tree = new ArithmeticSyntaxTree();
+        // // SATnode root = new SATnode();
+        // int open_count = 0;
+
+        // LinkedList<String> list = new LinkedList<String>();
+
+        // for(int i = 0; i < split.length; i++)
+        // {
+        //     String add = split[i];
+        //     list.add(add);
+        // }
+        // System.out.println(list);
+        // //split = precedence(list);
+        // Tree.pushArray(root, split);
+        // System.out.println();
+        // Tree.inorderTraversal(root);
+        // System.out.println();
+        // System.out.println(Tree.evaluation(root));
     }  
     
     public static String[] precedence(LinkedList<String> list)

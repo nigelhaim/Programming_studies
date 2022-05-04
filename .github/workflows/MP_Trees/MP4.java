@@ -13,18 +13,11 @@ class Tnode implements TreePrinter.PrintableNode
     Tnode leftChild;
     Tnode rightChild;
     int data;
-    boolean character; 
     Tnode(int data)
     {
         this.data = data;
         leftChild = null;
         rightChild = null;
-    }
-    public void setCharacter(boolean t){
-        if(t)
-        {
-            character = true;
-        }
     }
     @Override
     public Tnode getLeft() {
@@ -38,15 +31,9 @@ class Tnode implements TreePrinter.PrintableNode
 
     @Override
     public String getText() {
-        if(character)
-        {
-            char r = (char)data;
-            return Character.toString(r);
-        }
-        else 
-        {
-            return Integer.toString(data);
-        }
+        char r = (char)data;
+        return Integer.toString(data);
+
     }
 }
 class SATnode implements SATreePrinter.SATPrintableNode
@@ -344,7 +331,7 @@ class Tree{
         {
             return;
         }
-        if(node.leftChild != null && node.rightChild != null)
+        if(node.leftChild != null || node.rightChild != null)
         {
             System.out.print(node.data + " ");
             if(node.leftChild != null)
@@ -452,7 +439,7 @@ public class MP4
                                     rawTree.make_character(true);
                                     integer = false;
                                     character = true;
-                                    root.setCharacter(true);
+                                    SATprinter.setCharater();
                                 }
                                 BSTexistence = true;
                                 bst = true;
@@ -472,7 +459,7 @@ public class MP4
                         System.out.print("Please input an algebric expression inside a closed Pharentheses\nExample: (((9+(8/2))*3)+(3*4))\n");
                         System.out.print("Enter Expression: ");
                         String original = in.next();
-                        String [] split =  new String[original.length()];
+                        String [] split =  original.split("(?<=\\d)(?=\\D)|(?<=\\D)(?=\\d)");
                         for(int j = 0; j < split.length; j++)
                         {
                             char c = original.charAt(j);
@@ -767,6 +754,7 @@ class TreePrinter
      * @param root
      *            tree root node
      */
+    static boolean character = false;
     public static void print(Tnode root)
     {
         List<List<String>> lines = new ArrayList<List<String>>();
@@ -899,6 +887,11 @@ class SATreePrinter
      * @param root
      *            tree root node
      */
+    static boolean character;
+    public static boolean setCharater()
+    {
+        return character = true;
+    }
     public static void print(SATnode root)
     {
         List<List<String>> lines = new ArrayList<List<String>>();
@@ -923,7 +916,15 @@ class SATreePrinter
                     next.add(null);
                     next.add(null);
                 } else {
-                    String aa = n.getText();
+                    String aa;
+                    if(character)
+                    {
+                        aa = Character.toString((char)Integer.parseInt(n.getText()));
+                    }
+                    else
+                    {
+                        aa = n.getText();
+                    }
                     line.add(aa);
                     if (aa.length() > widest) widest = aa.length();
 
