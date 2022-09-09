@@ -1,6 +1,5 @@
 package pancake;
 
-
 import java.util.ArrayDeque;
 import java.util.Deque;
 
@@ -35,7 +34,7 @@ public class PancakeApp {
         int numCustomers = Util.randomValueBetwen(100, 200);
 
         // TODO Initialize the queue variable appropriately
-        Deque<Customer> queue = null;
+        Deque<Customer> queue = new ArrayDeque<>();//Initialize appropriate queue
 
         for (int i = 1; i <= numCustomers; i++) {
 
@@ -45,6 +44,7 @@ public class PancakeApp {
 
             // TODO Add customer to the queue.
             // HINT: Remember, queues are First-In-First-Out.
+            queue.addLast(customer);//Added first in first out method
 
         }
 
