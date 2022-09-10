@@ -45,8 +45,8 @@ public class Customer {
         while(bellySize != 0){//While the customer is still hungry 
             Pancake pan = pancakes.pollFirst();//Gets one pancake 
             if(pan != null){//If a pancake still exists
-                System.out.print(this.name + " ate " + pan.getNumber());
-                this.bellySize--;//It will feed the customer
+                System.out.print(this.name + " ate #" + pan.getNumber() + "!\n");
+                this.bellySize = bellySize - 1;//It will feed the customer
             }
             else{//Else if there are no more pancakes they will complain
                 throw new HungryException(this.name + " is still hungry :(");
