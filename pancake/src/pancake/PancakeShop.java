@@ -34,7 +34,7 @@ public class PancakeShop {
             // TODO modify this line to get the first customer in line. You should use a "poll" method, which will
             // TODO return null if there are no more customers left.
             // HINT: Remember, queues are FIFO.
-            while (customerQueue.size() != 0) {
+            while (customerQueue.size() > 0) {
                 customer = customerQueue.pollFirst();//Used poll first to return null if the line of customers is now empty
                 System.out.println(customer.getName() + " sat at the table. They want to eat "
                         + customer.getBellySize() + " pancakes for lunch!");

@@ -41,12 +41,16 @@ public class Customer {
          *   - Throw a HungryException
          * If we make it to the end without throwing an exception, print out how many pancakes we ate.
          */
-
+        int eatCount = 0;
         while(bellySize != 0){//While the customer is still hungry 
             Pancake pan = pancakes.pollFirst();//Gets one pancake 
             if(pan != null){//If a pancake still exists
-                System.out.print(this.name + " ate #" + pan.getNumber() + "!\n");
+                System.out.print(this.name + " ate Pancake #" + pan.getNumber() + "!\n");
                 this.bellySize = bellySize - 1;//It will feed the customer
+                 eatCount++;
+                if(bellySize == 0){
+                   System.out.print(this.name + " ate " + eatCount + " pancakes in total!\n");
+                }
             }
             else{//Else if there are no more pancakes they will complain
                 throw new HungryException(this.name + " is still hungry :(");
