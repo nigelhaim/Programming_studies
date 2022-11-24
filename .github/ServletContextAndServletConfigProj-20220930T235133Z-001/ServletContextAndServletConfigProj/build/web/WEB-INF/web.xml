@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <context-param>
+        <param-name>myMessage</param-name>
+        <param-value>I enjoy coding!</param-value>
+    </context-param>
+    <context-param>
+        <param-name>myEmail</param-name>
+        <param-value>lgdecamora@ust.edu.ph</param-value>
+    </context-param>
+    
+    <servlet>
+        <servlet-name>ServletOne</servlet-name>
+        <servlet-class>controllers.ServletOne</servlet-class>
+        <init-param>
+            <description>this is my username</description>
+            <param-name>username</param-name>
+            <param-value>lawrence</param-value>
+        </init-param>
+        <init-param>
+            <description>this is the password of the username</description>
+            <param-name>password</param-name>
+            <param-value>pass1234</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletOne</servlet-name>
+        <url-pattern>/ServletOne</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>ServletTwo</servlet-name>
+        <servlet-class>controllers.ServletTwo</servlet-class>
+        <init-param>
+            <param-name>faveCoffee</param-name>
+            <param-value>Espresso</param-value>
+        </init-param>
+        <init-param>
+            <param-name>faveBeer</param-name>
+            <param-value>San Mig</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletTwo</servlet-name>
+        <url-pattern>/ServletTwo</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+</web-app>

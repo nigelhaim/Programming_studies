@@ -1,0 +1,35 @@
+LARGEST-SUM(A[p..r])
+n <- Array Length
+if n == 1 
+    then return A[0]
+m <- n/2
+lss <- LARGEST-SUM(A[p..r], m)
+rss <- LARGEST-SUM(A[p+1..r], m)
+while i <- m  to n do 
+    sum <- sum + A[i]
+    rightsum <- max(rightsum, sum)
+sum <- 0 
+while j <- m-1 to 0 do 
+    sum <- sum + A[i]
+    leftsum <- max(leftsum, sum)
+ans <- max(lss, rss)
+return max(ans, leftsum + rightsum)
+Initial call is LARGEST-SUM(A[1..n])
+
+=======================================
+LARGEST-SUM(A[p..r])
+n <- Array Length
+if n == 1 
+    then return A[0]
+m <- n/2
+while i <- m  to n do 
+    sum <- sum + A[i]
+    rightsum <- max(rightsum, sum)
+sum <- 0 
+while j <- m-1 to 0 do 
+    sum <- sum + A[i]
+    leftsum <- max(leftsum, sum)
+lss <- LARGEST-SUM(A[p..r], m)
+rss <- LARGEST-SUM(A[p+1..r], m)
+COMBINE(lss, rss    , sum)
+Initial call is LARGEST-SUM(A[1..n])

@@ -1,7 +1,4 @@
 
-from turtle import right
-
-
 def divideAndConquer(insArray, n):
     if n==1:
         return insArray[0]
@@ -23,8 +20,8 @@ def divideAndConquer(insArray, n):
         summ += insArray[j]
         leftsum = max(leftsum, summ)
         j = j-1
-    
     ans = max(lss, rss)
+    
     return max(ans, leftsum+rightsum)
 instanceArray = [-5,1,2,-2,6,8,-4,3]
 

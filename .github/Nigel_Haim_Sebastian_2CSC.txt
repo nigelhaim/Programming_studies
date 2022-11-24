@@ -1,0 +1,78 @@
+<!--Submitted by: Nigel Haim N. Sebastian-->
+<html>
+<head>
+    <title>
+        Form1
+    </title>
+</head>
+<body>
+    <style>
+        body{
+            width: 90%;
+            height: 80vh;
+            margin-left: 2%;
+            margin-top:3%;
+        }
+        form{
+            height: 95%;
+            width: 95%;
+            background-color: whitesmoke;
+            padding:10px;
+        }
+        div{
+            width: 50%;
+            background-color: #aac2dd;
+            padding: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border-radius: 5px;
+        }
+        header{
+            display: flex;
+            width: 100%;
+        }
+        img{
+            margin-top:15px;
+        }
+
+    </style>
+
+    <div id="fff">
+        <header>
+            <img id="logo" src="https://cdn.discordapp.com/attachments/1013982573841616907/1042250659573026826/image.png" style="width:5%; height:5%; margin-right: 10px;">
+            <p>Form 1</p>
+            <img id="buttons" src="https://media.discordapp.net/attachments/1013982573841616907/1042251358599925790/image.png" style="width: 25%; height: 25%; margin-left: 55%;" align="right">
+        </header>
+
+        <form>
+            <label>Name: </label><input type="text">
+            <p>Status</p>
+    
+            <fieldset>
+                <legend>Status</legend>
+                <input type="radio" name="status"><label>Dine-In</label>
+                <input type="radio" name="status"><label>Take-out</label>
+            </fieldset>
+            <br>
+            <fieldset>
+                <legend>Size</legend>
+                <input type="radio" name="size"><label>Regular</label>
+                <input type="radio" name="size"><label>Large</label>
+            </fieldset>
+    
+    
+            <br><br>
+            <input type="checkbox" name="cheese"><label>Cheese</label>
+            <br>
+    
+            <input type="checkbox" name="vegetables"><label>Vegetables</label>
+            <br>
+            <input type="checkbox" name="meat"><label>Meat</label>
+            <br>
+            <br>
+            <input type="submit" value="Total">
+    
+        </form>
+    </div>
+</body>
+</html>    
