@@ -74,8 +74,7 @@ public class MyColorCalculator{
 		bp.add(comp);
 		bp.add(clear);
 
-		cp.setSize(new Dimension(300, 200));
-		cp.setBackground(Color.YELLOW);
+		cp.setSize(200,200);
 
 		f.add(pr);
 		f.add(pg);
@@ -85,8 +84,8 @@ public class MyColorCalculator{
 		f.add(cp);
 
 		f.setLayout(new GridLayout(6,2));
-
-		f.pack();
+		f.setSize(400,350);
+		
 		f.setVisible(true);
 	}
 
