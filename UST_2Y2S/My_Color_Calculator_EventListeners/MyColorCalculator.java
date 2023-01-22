@@ -130,7 +130,7 @@ public class MyColorCalculator implements ActionListener
 				cp.add(l);
 			}
 			catch(IllegalArgumentException iae){
-				String s = "Values up to 255 only";
+				String s = "Values 0 - 255 only";
 				System.out.println(s);
 				Label l = new Label(s);
 				cp.add(l);
