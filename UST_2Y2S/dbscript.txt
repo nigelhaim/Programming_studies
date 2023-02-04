@@ -1,0 +1,15 @@
+create table PERSON_INFO (name varchar(20), age integer, country varchar(20));
+
+insert into PERSON_INFO (name, age, country) values('Percy', 30, 'US');
+insert into PERSON_INFO (name, age, country) values('Ericson', 25, 'Philippines');
+insert into PERSON_INFO (name, age, country) values('Jerry', 27, 'Italy');
+insert into PERSON_INFO (name, age, country) values('Shiro', 33, 'Japan');
+insert into PERSON_INFO (name, age, country) values('Lawrence', 29, 'Canada');
+
+
+SELECT * from PERSON_INFO
+
+
+
+// drop table PERSON_INFO
+

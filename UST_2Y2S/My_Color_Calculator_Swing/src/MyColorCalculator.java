@@ -1,8 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-
-import javafx.scene.paint.Color;
 public class MyColorCalculator implements ActionListener
 {
 	//Containers
@@ -120,8 +118,8 @@ public class MyColorCalculator implements ActionListener
 					System.out.println("The value for blue is:" + blue_value);
 					System.out.println("The value for alpha is:" + alpha_value);
 					
-					//Color c = new Color(red_value, green_value, blue_value, alpha_value);
-					
+					Color c = new Color(red_value, green_value, blue_value, alpha_value);
+					cp.setBackground(c);
 				}
 			}
 
