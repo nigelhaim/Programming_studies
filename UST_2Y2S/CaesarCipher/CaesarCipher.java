@@ -5,18 +5,22 @@ public class CaesarCipher{
 	public static String encrypt(String message){
 		String mesg = "";
 		for(int i = 0; i < message.length(); i++){
-			char character= message.charAt(i);
-			if((character >= 'a') && ((character +key) >= 'z') && (character  != ' ')){
-				mesg += (char)((96 - (122 - character ))+key);//ASCII DECIMAL VALUE OF a
+			char character = message.charAt(i);
+			if((character < 'A' || character > 'Z') && (character < 'a' || character > 'z')){
+				mesg += (char)(character);
 			}
-			else if((character < 'a') && ((character +key) >= 'Z') && (character  != ' ')){
-			//ASCII DECIMAL VALUE OF A
-				mesg += (char)((64 - (90 - character ))+key);
+			else{	
+				if((character >= 'a') && ((character +key) >= 'z') && (character  != ' ')){
+					mesg += (char)((96 - (122 - character ))+key);//ASCII DECIMAL VALUE OF a
+				}
+				else if((character < 'a') && ((character +key) >= 'Z') && (character  != ' ')){
+				//ASCII DECIMAL VALUE OF A
+					mesg += (char)((65 - (90 - character ))+key);
+				}
+				else{
+					mesg += (char)(character+key);
+				}
 			}
-			else{
-				mesg += (char)(character+key);
-			}
-
 		}
 		return mesg;
 	}
@@ -24,17 +28,22 @@ public class CaesarCipher{
 	public static String decrypt(String message){
 		String mesg = "";
 		for(int i = 0; i < message.length(); i++){
-			//mesg += (char)(message.charAt(i)-key);
 			char character = message.charAt(i);
-			if((character >= 'Z') && ((character - key) <= 'a') && (character  != ' ')){
-				mesg += (char)((122 + (character-key)) - 96);//ASCII DECIMAL VALUE OF a
+			if((character < 'A' || character > 'Z') && (character < 'a' || character > 'z')){
+				mesg += (char)(character);
 			}
-			else if(((character - key) <= 'A') && (character >= 'Z') &&(character  != ' ')){
-			//ASCII DECIMAL VALUE OF A
-				mesg += (char)((90 + (character-key)) - 64);
-			}
-			else{
-				mesg += (char)(character-key);
+			else{			
+				//mesg += (char)(message.charAt(i)-key);
+				if((character >= 'Z') && ((character - key) <= 'a')){
+					mesg += (char)((122 + (character-key)) - 96);//ASCII DECIMAL VALUE OF a
+				}
+				else if(((character - key) <= 'A')){
+				//ASCII DECIMAL VALUE OF A
+					mesg += (char)((90 + (character-key)) - 65);
+				}
+				else{
+					mesg += (char)(character-key);
+				}
 			}
 		}
 		return mesg;
