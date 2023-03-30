@@ -1,7 +1,7 @@
 
 public class TestEncryption {
     public static void main(String[] args) {
-        String str = "admin";
+        String str = "university of santo tomas";
         
         System.out.println("Original Str: " + str);
         
