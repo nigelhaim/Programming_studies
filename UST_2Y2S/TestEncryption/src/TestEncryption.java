@@ -1,15 +1,27 @@
-
+import java.util.Random;
 public class TestEncryption {
     public static void main(String[] args) {
-        String str = "university of santo tomas";
+        for(int i = 0; i < 100; i++){
+            Random rd = new Random(); // creating Random object
+            Boolean admin = rd.nextBoolean(); // displaying a random boolean
+            String str = "USERNAME" + i;
+            String pass = "PASSWORD" + i;
+            String role;
+            if(admin){
+                role = "ADMIN";
+            }
+            else{
+                role = "GUEST";
+            }
+            //System.out.println("Original Str: " + str);
         
-        System.out.println("Original Str: " + str);
+            String encrypStr = Security.encrypt(pass);
+            String fin = "INSERT INTO USERS VALUES(" + "'" + str + "'" + ", "  + "'" + encrypStr  + "'" + ", "  + "'" + role  + "'" + ");";
+            System.out.println(fin);
+            //System.out.println("Encrypted version: " + encrypStr);
         
-        String encrypStr = Security.encrypt(str);
-        
-        System.out.println("Encrypted version: " + encrypStr);
-        
-        System.out.println("Decrypted version: " + Security.decrypt(encrypStr));
+            //System.out.println("Decrypted version: " + Security.decrypt(encrypStr));
+        }
     }
 }
 
