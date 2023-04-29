@@ -24,7 +24,7 @@ mov [140], dx ; DS:140 = ah
 VERSION 2: 
 
 a 100
-mov al, byte ptr[100] ; al =  X 
+mov al, byte ptr[100] ; al = x 
 mul byte ptr[110] ; ax = x * y
 add ax, 35 ; ax = xy + 35 
 mov dx, ax; dx = ax or dx is the dividend
@@ -74,7 +74,7 @@ mov ax, [400]; ax = the lower word in the doubleword a
 add ax, [410]; lower words of a and b are added stored to ax
 mov bx, [402]; bx = the higher word in the doubleword a
 adc bx, [412]; higher words of a and b are added stored to bx
-mov dx, bx; dx = higher words of a and b
+mov dx, bx; dx = added higher words of a and b
 
 div cx; ax = dx.ax / cx or (a+b)/(a/x)+(b/y) REM-> dx
 mov [430],ax; DS:430 = ax or quotient

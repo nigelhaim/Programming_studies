@@ -1,0 +1,8 @@
+#Best viewed on visual studio code with Bracket Pair Color DLW | Extension ID: BracketPairColorDLW.bracket-pair-color-dlw
+∀x[¬ Brick(x) v (∃y[On(x,y) Λ ¬ Pyramid(y)] Λ ¬∃y[On(x,y) Λ On(y,x)] Λ ∀y[Brick(y) v ¬Equal(x,y)])]                                                                                      |Eliminate biconditionals and implications
+∀x[¬ Brick(x) v (∃y[On(x,y) Λ ¬ Pyramid(y)] Λ ∃y[¬On(x,y) Λ ¬On(y,x)] Λ ∀y[Brick(y) v ¬Equal(x,y)])]                                                                                     |Move  ¬ inwards
+∀x[¬ Brick(x) v (∃y[On(x,y) Λ ¬ Pyramid(y)] Λ ∃z[¬On(x,z) Λ ¬On(j,z)] Λ ∀j[Brick(j) v ¬Equal(x,j)])]                                                                                     |Standardize variables
+∀x[¬ Brick(x) v ([On(x,F(x)) Λ ¬ Pyramid(F(x))] Λ [¬On(x,G(x)) Λ ¬On(j,G(x))] Λ [Brick(H(x)) v ¬Equal(x,H(x))])]                                                                         |Skolemization
+[¬ Brick(x) v ([On(x,F(x)) Λ ¬ Pyramid(F(x))] Λ [¬On(x,G(x)) Λ ¬On(j,G(x))] Λ [Brick(H(x)) v ¬Equal(x,H(x))])]                                                                           |Drop Univsersal quantifiers
+[¬ Brick(x) v [On(x,F(x)) Λ ¬ Pyramid(F(x))]] Λ [¬ Brick(x) v [¬On(x,G(x)) Λ ¬On(j,G(x))]] Λ [Brick(H(x)) v ¬Equal(x,H(x))]                                                              |Distribute V over Λ
+[[¬ Brick(x) v On(x,F(x))] Λ [¬ Brick(x) v ¬ Pyramid(F(x))]] Λ [[¬ Brick(x) v ¬On(x,G(x))] Λ [¬ Brick(x) v ¬On(j,G(x))]] Λ [[¬ Brick(x) v Brick(H(x))] Λ [¬ Brick(x) v ¬Equal(x,H(x))]]  |
