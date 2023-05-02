@@ -37,7 +37,7 @@ mov al, byte ptr[120] ; al = z
 mul bl; ax = al * bl OR 2z
 sub ax, cx; ax = ax - cx or 30y - 2z
 mov bx, ax; bx = ax or bx is the divisor 
-mov ax, dx; ax = bx or xy + 35
+mov ax, dx; ax = dx or xy + 35
 div bx; 
 mov [130], ax ; DS:130 = al
 mov [140], dx ; DS:140 = ah
